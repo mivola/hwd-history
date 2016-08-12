@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry path="war/WEB-INF/classes" kind="output"/>
+	<classpathentry path="src/main/java" kind="src"/>
+	<classpathentry path="src/main/resources" kind="src"/>
+	<classpathentry path="src/test/java" kind="src"/>
+	<classpathentry path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/" kind="con"/>
+	<classpathentry path="com.google.gwt.eclipse.core.GWT_CONTAINER" kind="con"/>
+	<classpathentry path="C:/Users/mvoigt/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-servlet/2.7.0/6d5ed85568c13295374ba24194a987c0d952f3eb/gwt-servlet-2.7.0.jar" kind="lib" sourcepath="C:/Users/mvoigt/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-servlet/2.7.0/2abdc607f5101c9f431f1e671ee30061d42b8906/gwt-servlet-2.7.0-sources.jar"/>
+	<classpathentry path="C:/Users/mvoigt/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-codeserver/2.7.0/74d5e4119d083f7ca97e3f01cbd666d025b314b3/gwt-codeserver-2.7.0.jar" kind="lib" sourcepath="C:/Users/mvoigt/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-codeserver/2.7.0/657a855297f4e1e8f11c96983326a1fe23782f12/gwt-codeserver-2.7.0-sources.jar"/>
+	<classpathentry path="C:/_data/_SourceCode/HWD/hwd-history/lib/smartgwt.jar" kind="lib"/>
+	<classpathentry path="C:/_data/_SourceCode/HWD/hwd-history/lib/smartgwt-skins.jar" kind="lib"/>
+	<classpathentry path="C:/_data/_SourceCode/HWD/hwd-history/lib/gwt-log-3.0.1.jar" kind="lib"/>
+	<classpathentry path="C:/_data/_SourceCode/HWD/hwd-history/lib/charts4j-gwt-1.2.jar" kind="lib"/>
+</classpath>
