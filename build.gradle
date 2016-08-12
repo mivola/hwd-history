@@ -19,8 +19,7 @@ apply plugin: 'eclipse'
 
 dependencies {
 	compile files('lib/smartgwt.jar', 'lib/smartgwt-skins.jar')
-	compile files('lib/gwt-log-3.0.1.jar') //do not change!
-	compile files('lib/charts4j-gwt-1.2.jar')
+	compile files('lib/charts4j-1.4-SNAPSHOT.jar')
 	
 //	compileTest 'junit:junit:4.4'
 	
@@ -29,7 +28,7 @@ dependencies {
 }
 
 gwt {
-	gwtVersion='2.0.0'
+	gwtVersion='2.7.0'
 	modules 'com.voigt.hwd.HwdHistory'
 }
 

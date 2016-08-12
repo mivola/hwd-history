@@ -15,16 +15,10 @@
 
     <inherits name="com.googlecode.charts4j"/>
 
-    <!-- logging with gwt-log -->
-	<!-- Add gwt-log support, default level `DEBUG` -->
-	<inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
-            
 	<!-- contains all domain objects that are shared between client and server -->
 	<source path="domain"/>
 	<source path="client"/>
     
     <entry-point class="com.voigt.hwd.client.Hwd"/>
 	
-	<servlet path="/gwt-log" class="com.allen_sauer.gwt.log.server.RemoteLoggerServiceImpl" />
-
 </module>

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.allen_sauer.gwt.log.client.Log;
+//import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.charts4j.AxisLabels;
 import com.googlecode.charts4j.AxisLabelsFactory;
@@ -298,7 +298,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		lineChart.addYAxisLabels(yAxisLabels);
 
 		String lineChartUrl = lineChart.toURLString();
-		Log.debug(lineChartUrl);
+		// Log.debug(lineChartUrl);
 		return lineChartUrl;
 	}
 
