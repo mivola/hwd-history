@@ -50,7 +50,7 @@ import com.voigt.hwd.client.navigation.ExplorerTreeNode;
 import com.voigt.hwd.client.navigation.NavigationSectionStack;
 import com.voigt.hwd.client.navigation.NavigationTree;
 
-public class Hwd implements EntryPoint, HistoryListener {
+public class HwdHistory implements EntryPoint, HistoryListener {
 
 	private static final String NORMAL_DATE_FORMAT = "dd.MM.yyyy HH:mm:ss";
 	private static final String SHORT_DATE_FORMAT = "dd.MM.yyyy";

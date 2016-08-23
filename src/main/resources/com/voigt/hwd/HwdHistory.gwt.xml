@@ -19,6 +19,9 @@
 	<source path="domain"/>
 	<source path="client"/>
     
-    <entry-point class="com.voigt.hwd.client.Hwd"/>
+    <entry-point class="com.voigt.hwd.client.HwdHistory"/>
+    
+    <!-- allow Super Dev Mode -->
+  	<add-linker name="xsiframe"/>
 	
 </module>
