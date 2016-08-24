@@ -4,7 +4,7 @@ jdk:
   - openjdk7
 
 script:
-  - ./gradlew build
+  - ./gradlew build -i -s
 
 before_install:
   - chmod +x gradlew

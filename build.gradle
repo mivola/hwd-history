@@ -25,6 +25,18 @@ dependencies {
 gwt {
 	gwtVersion='2.7.0'
 	modules 'com.voigt.hwd.HwdHistory'
+	minHeapSize = gwtCompilerMinHeapSize
+	maxHeapSize = gwtCompilerMaxHeapSize
+
+	/*compiler {
+		strict = true;
+		optimize = gwtCompilerOptimize;
+		enableClosureCompiler = gwtCompilerEnableClosureCompiler;
+		disableCastChecking = true;
+		localWorkers = gwtLocalWorkers;
+		style = gwtCompilerStyle;
+		draftCompile = gwtCompilerDraftCompile;
+	}*/
 }
 
 task cleanWar (type: Delete) {
