@@ -93,6 +93,9 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 				} else if (value instanceof Integer) {
 					Integer intValue = (Integer) value;
 					result = format.format(intValue);
+				} else if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					result = format.format(doubleValue);
 				}
 
 				result = result.replace(".", ",");
