@@ -1,3 +1,34 @@
+.navBarHeader {
+    font: 18px Arial, Verdana, Tahoma, sans-serif !important;
+}
+
+.exampleSeparator {
+    border-bottom: 2px solid gray;
+    background-color:white; color:black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.hoverTreeGridCustom {
+    border:1px solid #CCCCCC;
+    background-color:white;
+    -moz-box-shadow: 0 0 6px #E8E8E8;
+    -webkit-box-shadow: 0 0 6px#E8E8E8;
+    box-shadow: 0 0 6px #E8E8E8;
+    font-size:11px;
+    font-family: Calibri, "Lucida Sans Unicode","Lucida Grande","Trebuchet MS", Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color:#363B30;
+}
+
+.showcaseTileGrid {
+    border: 6px solid transparent;
+    -moz-border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAAnRSTlMAAHaTzTgAAAA6SURBVHgBY9iOBhi2v0YBIIGHSACXwOOXINUvH8MFXp4HGXf+JVQATAEBkEWBAMJQTGsJuxSb59AAAOBGySGOFM5JAAAAAElFTkSuQmCC) 6 repeat;
+    -o-border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAAnRSTlMAAHaTzTgAAAA6SURBVHgBY9iOBhi2v0YBIIGHSACXwOOXINUvH8MFXp4HGXf+JVQATAEBkEWBAMJQTGsJuxSb59AAAOBGySGOFM5JAAAAAElFTkSuQmCC) 6 repeat;
+    -webkit-border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAAnRSTlMAAHaTzTgAAAA6SURBVHgBY9iOBhi2v0YBIIGHSACXwOOXINUvH8MFXp4HGXf+JVQATAEBkEWBAMJQTGsJuxSb59AAAOBGySGOFM5JAAAAAElFTkSuQmCC) 6 repeat;
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAAnRSTlMAAHaTzTgAAAA6SURBVHgBY9iOBhi2v0YBIIGHSACXwOOXINUvH8MFXp4HGXf+JVQATAEBkEWBAMJQTGsJuxSb59AAAOBGySGOFM5JAAAAAElFTkSuQmCC) 6 repeat;
+}
+
 /* Buttons*/
 .cssButton {
     padding:2px;
@@ -269,50 +300,83 @@ grid cell styles sample
     background-color:#ffffff;
 }
 
-.myOtherGridCell {
+.myOtherGridCell,
+.myEvenGridCell, 
+.myEvenGridCellDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:black;
     border-bottom:1px solid #ffffff; border-top:1px solid #ffffff;
     background-color:#ffffff;
 }
-.myOtherGridCellDark {
+.myOtherGridCellDark,
+.myOddGridCell, 
+.myOddGridCellDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:black;
     border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
     background-color:#f0f0e8;
 }
 .myOtherGridCellOver,
-.myOtherGridCellOverDark {
+.myOtherGridCellOverDark,
+.myEvenGridCellOver,
+.myEvenGridCellOverDark,
+.myOddGridCellOver,
+.myOddGridCellOverDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:black;
     border-bottom:1px solid #c0c0c0; border-top:1px solid #c0c0c0;
     background-color:#ffffc0;
 }
 .myOtherGridCellSelected,
-.myOtherGridCellSelectedDark {
+.myOtherGridCellSelectedDark,
+.myEvenGridCellSelected,
+.myEvenGridCellSelectedDark,
+.myOddGridCellSelected,
+.myOddGridCellSelectedDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:black;
     border-bottom:1px solid #c0c0ff; border-top:1px solid #c0c0ff;
     background-color:#c0c0ff;
 }
 .myOtherGridCellSelectedOver,
-.myOtherGridCellSelectedOverDark {
+.myOtherGridCellSelectedOverDark,
+.myEvenGridCellSelectedOver,
+.myEvenGridCellSelectedOverDark,
+.myOddGridCellSelectedOver,
+.myOddGridCellSelectedOverDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:black;
     border-bottom:1px solid #a0a0a0; border-top:1px solid #a0a0a0;
     background-color:#e0e0ff;
 }
-.myOtherGridCellDisabled {
+.myOtherGridCellDisabled,
+.myEvenGridCellDisabled,
+.myEvenGridCellDisabledDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:#808080;
     border-bottom:1px solid #ffffff; border-top:1px solid #ffffff;
     background-color:#ffffff;
 }
-.myOtherGridCellDisabledDark {
+.myOtherGridCellDisabledDark,
+.myOddGridCellDisabled,
+.myOddGridCellDisabledDark {
     font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
     color:#808080;
     border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
     background-color:#f0f0e8;
+}
+
+.simpleCell,
+.simpleCellSelected,
+.simpleCellOver,
+.simpleCellSelectedOver {
+    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
+    color:black;
+}
+
+.simpleCellDisabled {
+    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
+    color:#808080;
 }
 
 /*
@@ -720,42 +784,228 @@ html>body .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopRight {
   border: 1px dotted blue;
 }
 
+.thumbnail,
+.thumbnailOver,
+.thumbnailSelected,
+.thumbnailSelectedOver {
+    border : 1px solid #CDCDCB;
+}
 
-/* MV: checkboxes for user selection in chart */
-.hwdCheckboxTextbox {
-  font-weight: bold;
+.thumbnailTitle,
+.thumbnailTitleOver,
+.thumbnailTitleSelected,
+.thumbnailTitleSelectedOver {
+    font-size:9px;
+    text-overflow:ellipsis;
 }
-	
-.hueniCheckboxTextbox {
-  color: #0000FF;
+
+.thumbnailTitleOver,
+.thumbnailTitleSelected,
+.thumbnailTitleSelectedOver {
+    font-size:9px;
+    text-overflow:ellipsis;    
+    color: #336699;
 }
-.michaChecboxTextbox {
-  color: #8A2BE2;
+
+/* ------- Explorer Buttons ------- */
+.explorerButtonBoxR {
+	padding: 5px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	margin-top: 8px;
+	margin-bottom: 6pt;
+	text-align: center;
+	-moz-box-shadow: 1px 1px 2px 2px #aaa;
+	-webkit-box-shadow: 1px 1px 2px 2px #aaa;
+	box-shadow: 1px 1px 2px 2px #aaa;
+	border: 1px solid #e2e2e2;
 }
-.stevChecboxTextbox {
-  color: #FF7F50;
+.explorerButtonBoxGradient {
+	background-color: #e2e2e2;
+	background:linear-gradient(to bottom, #e2e2e2 5%, #fdfdfd 100%);
 }
-.nicoChecboxTextbox {
-  color: #00FFFF;
+.explorerButtonBoxB {
+	height: 28pt;
+	width: 65pt;
+	border: 2px solid red;
+	background: grey;
 }
-.markusChecboxTextbox {
-  color: #A52A2A;
+
+.ERbutton a {
+	margin-top: 8pt;
+	line-height: 40px;
+	height:40px;
+	width: 96pt;
+	font-size: 10.5pt;
 }
-.tobiChecboxTextbox {
-  color: #1E90FF;
+.ERbutton div {
+	line-height: 14pt;
+	margin-bottom: 4pt;
+	font-family: Calibri, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, Helvetica, Arial, sans-serif;
+	font-size: 11pt;
+	color: #666;
+	font-weight: bold;
 }
-.marcelChecboxTextbox {
-  color: #00FF7F;
+.EBbutton a {
+	font-size: 10pt;
+	line-height: 14pt;
+	height: 20px;
+	width: 100pt;
+}				 
+.EBbutton span {
+	font-family: Calibri, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+	color: #666;
+	font-weight: bold;
 }
-.janChecboxTextbox {
-  color: #FF0000;
+.EbuttonPrefix {
+	line-height: 14pt;
+	margin-bottom: 4pt;
+	font-family: Calibri, Lucida Sans Unicode, Lucida Grande, Trebuchet MS, Helvetica, Arial, sans-serif;
+	font-size: 11pt;
+	color: #666;
+	font-weight: bold;
 }
-.patziChecboxTextbox {
-  color: #D2B48C;
+ 
+.darkgrey_Ebutton a {	
+	background-color:#595959;
+	text-align:center;
+	vertical-align: middle;
+    display:inline-block;
+	color:#ffffff;
+    font-family: Calibri, "Lucida Sans Unicode","Lucida Grande","Trebuchet MS", Helvetica, Arial, sans-serif;
+    text-decoration:none;
 }
-.rossiChecboxTextbox {
-  color: #8FBC8F;
+.darkgrey_Ebutton a:hover {
+    background-color:#363636;
+	color: #fff;
 }
-.svenChecboxTextbox {
-  color: #FF00FF;
+.darkgrey_Ebutton a:active {
+    position:relative;
+    top:1px;
+}
+
+.blue_Ebutton a {
+    background-color:#4b76f7;
+    text-align:center;
+    vertical-align: middle;
+    display:inline-block;
+    color:#ffffff;
+    font-family: Calibri, "Lucida Sans Unicode","Lucida Grande","Trebuchet MS", Helvetica, Arial, sans-serif;
+    text-decoration:none;
+}
+.blue_Ebutton a:hover {
+    background-color:#1a3ea9;
+	color: #fff;
+}
+.blue_Ebutton a:active {
+    position:relative;
+    top:1px;
+}
+.orange_Ebutton a {
+    background-color:#f60;
+    text-align:center;
+    vertical-align: middle;
+    display:inline-block;
+    color:#ffffff;
+    font-family: Calibri, "Lucida Sans Unicode","Lucida Grande","Trebuchet MS", Helvetica, Arial, sans-serif;
+    text-decoration:none;
+}
+.orange_Ebutton a:hover {
+    background-color:#cd5a0d;
+	color: #fff;
+}
+.orange_Ebutton a:active {
+    position:relative;
+    top:1px;
+}
+
+/* ------- Explorer Style ------- */
+.explorerBottomPane {
+	border-top: 1px solid lightgrey;
+}
+
+.explorerSelectedButtonPrefixText {
+	padding-left: 8pt;
+	overflow: hidden;
+}
+
+.explorerWelcomePageTitle {
+	text-align: center;
+	font-size: 14pt;
+    padding:7px;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.explorerWelcomePagePoints {
+	float: left;
+} 
+.explorerWelcomePageBullet {
+	border: 6px solid grey; background-color: grey; color: white;
+	width: 12px;
+	height: 12px;
+	border-radius: 12px;
+	float: left;
+	margin-right: 5pt;
+}
+.explorerWelcomePageNumber {
+	position: relative; top: -5pt; left: 1pt;
+}
+.explorerWelcomeViewDoc {
+	float: left;
+}
+
+.explorerSearchItem,
+.explorerSearchItemRTL,
+.explorerSearchItemFocused,
+.explorerSearchItemFocusedRTL,
+.explorerSearchItemDisabled,
+.explorerSearchItemDisabledRTL,
+.explorerSearchItemDisabledHint,
+.explorerSearchItemDisabledHintRTL,
+.explorerSearchItemError,
+.explorerSearchItemErrorRTL,
+.explorerSearchItemHint,
+.explorerSearchItemHintRTL {
+    border: 1px solid #888;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding: 4px 6px 4px 5px;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: Black;
+    font: 11px Arial, Verdana, sans-serif;
+
+    /* Apply text-overflow:ellipsis for browsers that support text-overflow on <input>
+       elements.
+       Opera was the only major browser to prefix text-overflow. However, -o-text-overflow
+       is omitted here because Opera Presto does not support text-overflow on <input>s. */
+    text-overflow: ellipsis;
+}
+
+.explorerSearchItemRTL,
+.explorerSearchItemFocusedRTL,
+.explorerSearchItemDisabledRTL,
+.explorerSearchItemDisabledHintRTL,
+.explorerSearchItemErrorRTL,
+.explorerSearchItemHintRTL {
+    padding: 4px 5px 4px 6px;
+}
+
+/* Hide IE10+'s clear button - we have our own.
+   http://support.microsoft.com/kb/2813492 */
+.explorerSearchItem::-ms-clear,
+.explorerSearchItemRTL::-ms-clear,
+.explorerSearchItemFocused::-ms-clear,
+.explorerSearchItemFocusedRTL::-ms-clear,
+.explorerSearchItemDisabled::-ms-clear,
+.explorerSearchItemDisabledRTL::-ms-clear,
+.explorerSearchItemDisabledHint::-ms-clear,
+.explorerSearchItemDisabledHintRTL::-ms-clear,
+.explorerSearchItemError::-ms-clear,
+.explorerSearchItemErrorRTL::-ms-clear,
+.explorerSearchItemHint::-ms-clear,
+.explorerSearchItemHintRTL::-ms-clear {
+    display: none;
 }
