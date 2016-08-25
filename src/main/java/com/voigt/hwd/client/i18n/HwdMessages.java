@@ -13,6 +13,4 @@ public interface HwdMessages extends Messages {
 	public String welcomeNews();
 
 	public String welcomeNewsTitle();
-
-	public String userHueni();
 }

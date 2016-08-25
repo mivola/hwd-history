@@ -3,22 +3,17 @@ package com.voigt.hwd.client.grid.history;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.voigt.hwd.client.i18n.HwdMessages;
-import com.voigt.hwd.client.i18n.HwdMessagesFactory;
-
 public class HistoryOverviewDataProvider {
 
 	private static final int seasonOffset = 1999;
 	private static final String hwdBaseURL = "http://hwd.bts-computer.de/";
-	private final List<HistoryOverviewData> historyOverviewList = new ArrayList<HistoryOverviewData>();
-
-	private static final HwdMessages messages = HwdMessagesFactory.getInstance();
+	private final List<HistoryOverviewData> historyOverviewList = new ArrayList<>();
 
 	public HistoryOverviewDataProvider() {
 
 		String description1999 = "Die HWD-Premiere haben Hüni und Micha zur Rückrunde der Saison 1999/2000 eröffnet. Und das mit so antiken und unpassenden Mitteln wie Mircosoft Word! Später kam dann auch noch Stev dazu. Damals war der Einsatz noch wesentlich geringer: Der Verlierer eines Spieltags zahlt dem/n Gewinner/n ein Cola-Weizen. Jaja, das waren noch Zeiten ... ;-)";
 		HistoryOverviewData data1999 = new HistoryOverviewData(1062, 633, 3, "hwd99_00.png", "", description1999,
-				messages.userHueni(), "", "Die erste (halbe) Saison");
+				"Hüni", "", "Die erste (halbe) Saison");
 		historyOverviewList.add(data1999);
 
 		String description2000 = "Die zweite Saison haben wir zu dritt komplett durchgespielt, Und dank Stev \"Excel-Gott\" Thomas sogar mit vorzüglichen Excel-Tabellen :-)";
@@ -68,9 +63,8 @@ public class HistoryOverviewDataProvider {
 		int index = season - seasonOffset;
 		if (historyOverviewList.size() > index) {
 			return historyOverviewList.get(index);
-		} else {
-			return new HistoryOverviewData(100, 100, 1, "", "", "", "", "", "");
 		}
+		return new HistoryOverviewData(100, 100, 1, "", "", "", "", "", "");
 
 	}
 

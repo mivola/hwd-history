@@ -56,9 +56,9 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 
 		final ListGrid listGrid = new ListGrid();
 		listGrid.setWidth100();
-		listGrid.setHeight(255);
+		listGrid.setHeight(280);
 		listGrid.setDataSource(dataSource);
-		listGrid.setAutoFetchData(true);
+		listGrid.setAutoFetchData(Boolean.TRUE);
 
 		// http://forums.smartclient.com/showthread.php?p=14440#post14440
 		// http://abhijeetmaharana.com/blog/2008/12/12/override-rendering-of-column-from-smartgwt-data-source/
@@ -110,7 +110,7 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 		tippPointsPerSeasonField.setCellFormatter(floatFormatter);
 
 		listGrid.setFields(tippPointsPerSeasonField, pointsPerSeasonField, joinedField);
-		listGrid.setUseAllDataSourceFields(true);
+		listGrid.setUseAllDataSourceFields(Boolean.TRUE);
 
 		listGrid.setLoadingDataMessage("Lade die ganzen dollen Daten ....");
 

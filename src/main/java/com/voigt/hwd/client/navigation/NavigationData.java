@@ -11,7 +11,7 @@ public class NavigationData {
 
 	public static final String ROOT = "root";
 
-	private static final Map<String, ExplorerTreeNode[]> navigationDataMap = new HashMap<String, ExplorerTreeNode[]>();
+	private static final Map<String, ExplorerTreeNode[]> navigationDataMap = new HashMap<>();
 
 	private final String idSuffix;
 
@@ -31,7 +31,7 @@ public class NavigationData {
 							"silk/calendar_view_day.png", new HistoryOverview.Factory(), true, idSuffix),
 					new ExplorerTreeNode("Ewige Tabelle", "history-alltime-table", "history", "silk/calendar_add.png",
 							new HistoryAllTimeTable.Factory(), true, idSuffix),
-					new ExplorerTreeNode("9-Jahres-Platzierungen", "history-standings-chart", "history",
+					new ExplorerTreeNode("Platzierungen", "history-standings-chart", "history",
 							"silk/calendar_add.png", new HistoryStandingsChart.Factory(), true, idSuffix),
 
 			};

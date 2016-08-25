@@ -62,7 +62,7 @@ public class HistoryOverview extends AbstractBasePanel {
 
 		HwdMessages messages = HwdMessagesFactory.getInstance();
 
-		for (int i = 1999; i < 2008; i++) {
+		for (int i = 1999; i < 2009; i++) {
 			Tab tab = new Tab();
 
 			String seasonString = messages.seasonString(i, (i + 1));

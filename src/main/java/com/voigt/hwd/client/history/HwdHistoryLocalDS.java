@@ -57,7 +57,7 @@ public class HwdHistoryLocalDS extends DataSource {
 				cntSecondPlaceField, cntThirdPlaceField, cntLastPlaceField, totalPointsField, pointsPerSeasonField,
 				totalTippPointsField, tippPointsPerSeasonField);
 
-		setClientOnly(true);
+		setClientOnly(Boolean.TRUE);
 		setTestData(HwdItemData.getRecords());
 	}
 }
