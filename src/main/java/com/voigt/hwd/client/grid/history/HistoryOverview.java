@@ -11,6 +11,7 @@ import com.smartgwt.client.widgets.tab.Tab;
 import com.smartgwt.client.widgets.tab.TabSet;
 import com.voigt.hwd.client.AbstractBasePanel;
 import com.voigt.hwd.client.PanelFactory;
+import com.voigt.hwd.client.domain.Constants;
 import com.voigt.hwd.client.i18n.HwdMessages;
 import com.voigt.hwd.client.i18n.HwdMessagesFactory;
 
@@ -62,9 +63,8 @@ public class HistoryOverview extends AbstractBasePanel {
 
 		HwdMessages messages = HwdMessagesFactory.getInstance();
 
-		for (int i = 1999; i < 2009; i++) {
+		for (int i = Constants.START_YEAR; i <= Constants.END_YEAR; i++) {
 			Tab tab = new Tab();
-
 			String seasonString = messages.seasonString(i, (i + 1));
 			tab.setTitle(seasonString);
 

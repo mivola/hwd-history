@@ -3,9 +3,10 @@ package com.voigt.hwd.client.grid.history;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.voigt.hwd.client.domain.Constants;
+
 public class HistoryOverviewDataProvider {
 
-	private static final int seasonOffset = 1999;
 	private static final String hwdBaseURL = "http://hwd.bts-computer.de/";
 	private final List<HistoryOverviewData> historyOverviewList = new ArrayList<>();
 
@@ -60,7 +61,7 @@ public class HistoryOverviewDataProvider {
 
 	public HistoryOverviewData getData(int season) {
 
-		int index = season - seasonOffset;
+		int index = season - Constants.START_YEAR;
 		if (historyOverviewList.size() > index) {
 			return historyOverviewList.get(index);
 		}

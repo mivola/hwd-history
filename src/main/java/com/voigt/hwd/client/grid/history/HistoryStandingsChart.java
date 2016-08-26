@@ -45,6 +45,7 @@ import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.voigt.hwd.client.AbstractBasePanel;
 import com.voigt.hwd.client.PanelFactory;
+import com.voigt.hwd.client.domain.Constants;
 import com.voigt.hwd.client.domain.User;
 
 public class HistoryStandingsChart extends AbstractBasePanel {
@@ -61,17 +62,17 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	private static final Map<User, Integer[]> data = new HashMap<>();
 
 	static {
-		Integer[] hueni = new Integer[] { 1, 3, 3, 4, 2, 4, 4, 8, 9, 5 };
-		Integer[] micha = new Integer[] { 2, 2, 2, 3, 3, 1, 3, 7, 3, 2 };
-		Integer[] stev = new Integer[] { 3, 1, 4, 5, 1, 2, 2, 2, 1, 8 };
-		Integer[] nico = new Integer[] { 0, 0, 1, 1, 4, 3, 1, 1, 2, 1 };
-		Integer[] markus = new Integer[] { 0, 0, 5, 6, 6, 6, 5, 4, 8, 9 };
-		Integer[] tobi = new Integer[] { 0, 0, 0, 2, 5, 5, 7, 5, 4, 7 };
-		Integer[] marcel = new Integer[] { 0, 0, 0, 0, 0, 0, 6, 9, 10, 11 };
-		Integer[] jan = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 3, 7, 3 };
-		Integer[] patzi = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 6, 11, 6 };
-		Integer[] sven = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 5, 4 };
-		Integer[] rossi = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 6, 10 };
+		Integer[] hueni = new Integer[] { 1, 3, 3, 4, 2, 4, 4, 8, 9, 5, 0 };
+		Integer[] micha = new Integer[] { 2, 2, 2, 3, 3, 1, 3, 7, 3, 2, 0 };
+		Integer[] stev = new Integer[] { 3, 1, 4, 5, 1, 2, 2, 2, 1, 8, 0 };
+		Integer[] nico = new Integer[] { 0, 0, 1, 1, 4, 3, 1, 1, 2, 1, 0 };
+		Integer[] markus = new Integer[] { 0, 0, 5, 6, 6, 6, 5, 4, 8, 9, 0 };
+		Integer[] tobi = new Integer[] { 0, 0, 0, 2, 5, 5, 7, 5, 4, 7, 0 };
+		Integer[] marcel = new Integer[] { 0, 0, 0, 0, 0, 0, 6, 9, 10, 11, 0 };
+		Integer[] jan = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 3, 7, 3, 0 };
+		Integer[] patzi = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 6, 11, 6, 0 };
+		Integer[] sven = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 5, 4, 0 };
+		Integer[] rossi = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 6, 10, 0 };
 
 		data.put(HUENI, hueni);
 		data.put(MICHA, micha);
@@ -158,7 +159,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	private CheckboxItem createCheckbox(User user, ChangedHandler changedHandler) {
 		CheckboxItem checkbox = new CheckboxItem(user.getName());
 		checkbox.setDefaultValue(Boolean.TRUE);
-		checkbox.setTextBoxStyle(user.getName() + "ChecboxTextbox hwdCheckboxTextbox");
+		checkbox.setTextBoxStyle(user.getName() + "CheckboxTextbox hwdCheckboxTextbox");
 		checkbox.addChangedHandler(changedHandler);
 		return checkbox;
 	}
@@ -172,7 +173,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	private static Shape getShape(User user) {
 		switch (user) {
 		case HUENI:
-			return Shape.ARROW;
+			return Shape.SQUARE;
 		case MICHA:
 			return Shape.CIRCLE;
 		case STEV:
@@ -180,13 +181,13 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		case NICO:
 			return Shape.DIAMOND;
 		case MARKUS:
-			return Shape.ARROW;
+			return Shape.CIRCLE;
 		case TOBI:
 			return Shape.SQUARE;
 		case MARCEL:
 			return Shape.X;
 		case JAN:
-			return Shape.ARROW;
+			return Shape.CIRCLE;
 		case PATZI:
 			return Shape.CIRCLE;
 		case ROSSI:
@@ -276,11 +277,20 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		lineChart.setSize(CHART_WIDTH, CHART_HEIGHT);
 
 		// lineChart.addHorizontalRangeMarker(33.3, 66.6, LIGHTBLUE);
-		lineChart.setGrid(100d / 8d, 100d / 10d, 3, 3);
-		lineChart.addXAxisLabels(AxisLabelsFactory.newAxisLabels("1999/2000", "2000", "2001", "2002", "2003", "2004",
-				"2005", "2006", "2007", "2008"));
-		AxisLabels yAxisLabels = AxisLabelsFactory.newAxisLabels("", "10.", "9. ", "8. ", "7. ", "6. ", "5. ", "4. ",
-				"3. ", "2. ", "1. ");
+		int seasons = Constants.END_YEAR - Constants.START_YEAR;
+		lineChart.setGrid(100d / seasons, 100d / User.values().length + 1, 3, 3);
+
+		List<String> xLabels = new ArrayList<>();
+		for (int i = Constants.START_YEAR; i <= Constants.END_YEAR; i++) {
+			xLabels.add(String.valueOf(i));
+		}
+		lineChart.addXAxisLabels(AxisLabelsFactory.newAxisLabels(xLabels));
+
+		List<String> yLabels = new ArrayList<>();
+		for (int i = User.values().length; i > 0; i--) {
+			yLabels.add(String.valueOf(i));
+		}
+		AxisLabels yAxisLabels = AxisLabelsFactory.newAxisLabels(yLabels);
 		lineChart.addRightAxisLabels(yAxisLabels);
 		lineChart.addYAxisLabels(yAxisLabels);
 
