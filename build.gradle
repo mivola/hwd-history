@@ -20,6 +20,10 @@ apply plugin: 'eclipse'
 dependencies {
 	compile files('lib/smartgwt.jar', 'lib/smartgwt-skins.jar')
 	compile files('lib/charts4j-1.4-SNAPSHOT.jar')
+	
+	testCompile (
+		'junit:junit:4.12'
+	)
 }
 
 gwt {

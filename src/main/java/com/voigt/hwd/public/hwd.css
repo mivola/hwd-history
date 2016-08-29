@@ -1009,3 +1009,42 @@ html>body .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopRight {
 .explorerSearchItemHintRTL::-ms-clear {
     display: none;
 }
+
+/* MV: checkboxes for user selection in chart */
+.hwdCheckboxTextbox {
+  font-weight: bold;
+}
+	
+.hueniCheckboxTextbox {
+  color: #0000FF;
+}
+.michaCheckboxTextbox {
+  color: #8A2BE2;
+}
+.stevCheckboxTextbox {
+  color: #FF7F50;
+}
+.nicoCheckboxTextbox {
+  color: #00FFFF;
+}
+.markusCheckboxTextbox {
+  color: #A52A2A;
+}
+.tobiCheckboxTextbox {
+  color: #1E90FF;
+}
+.marcelCheckboxTextbox {
+  color: #00FF7F;
+}
+.janCheckboxTextbox {
+  color: #FF0000;
+}
+.patziCheckboxTextbox {
+  color: #D2B48C;
+}
+.rossiCheckboxTextbox {
+  color: #8FBC8F;
+}
+.svenCheckboxTextbox {
+  color: #FF00FF;
+}

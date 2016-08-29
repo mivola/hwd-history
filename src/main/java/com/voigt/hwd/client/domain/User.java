@@ -1,5 +1,7 @@
 package com.voigt.hwd.client.domain;
 
+import java.util.Date;
+
 public enum User {
 
 	// @formatter:off
@@ -18,6 +20,7 @@ public enum User {
 
 	private int id;
 	private String name;
+	private Date joined;
 
 	User(int id, String name) {
 		this.id = id;
@@ -42,6 +45,10 @@ public enum User {
 
 	public String getName() {
 		return name;
+	}
+
+	public Date getJoined() {
+		return joined;
 	}
 	
 	@Override

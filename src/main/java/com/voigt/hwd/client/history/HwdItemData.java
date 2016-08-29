@@ -1,9 +1,15 @@
 package com.voigt.hwd.client.history;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import com.voigt.hwd.client.domain.CalculatedData;
+import com.voigt.hwd.client.domain.HistoryData;
 import com.voigt.hwd.client.domain.Place;
+import com.voigt.hwd.client.domain.Season;
 import com.voigt.hwd.client.domain.User;
+import com.voigt.hwd.client.domain.UserSeasonRecord;
 
 public class HwdItemData {
 
@@ -22,6 +28,44 @@ public class HwdItemData {
 		// TODO: 1-3. plätze punkte vergeben und summieren!
 		// TODO: faktor für saisons for 3-punkte regel, und ohne joker
 
+		
+		
+		Season season2001 = new Season(2001);
+		season2001.addUser(User.HUENI, new UserSeasonRecord(3, 9, 226))
+				.addUser(User.MICHA, new UserSeasonRecord(2, 10, 237))
+				.addUser(User.STEV, new UserSeasonRecord(4, 8, 262))
+				.addUser(User.NICO, new UserSeasonRecord(1, 15, 294))
+				.addUser(User.MARKUS, new UserSeasonRecord(5, 4, 177));
+		HistoryData.addSeason(season2001);
+
+		Season season2000 = new Season(2000);
+		season2000.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173))
+				.addUser(User.MICHA, new UserSeasonRecord(2, 12, 177))
+				.addUser(User.STEV, new UserSeasonRecord(1, 12, 181));
+		HistoryData.addSeason(season2000);
+
+		Season season1999 = new Season(1999);
+		season1999.addUser(User.HUENI, new UserSeasonRecord(1, 8, 97))
+				.addUser(User.MICHA, new UserSeasonRecord(2, 7, 101))
+				.addUser(User.STEV, new UserSeasonRecord(3, 3, 58));
+		HistoryData.addSeason(season1999);
+
+		List<HwdItemRecord> hwdItemRecords = new ArrayList<>();
+		for (User user : User.values()) {
+			CalculatedData userData = HistoryData.getUserData(user);
+			if (userData != null) {
+				HwdItemRecord hwdItemRecord = new HwdItemRecord(user.getId(), user.getName(), user.getJoined(),
+						userData.getCntSeasons(), userData.getCntFirstPlace(), userData.getCntSecondPlace(),
+						userData.getCntThirdPlace(), userData.getCntLastPlace(), userData.getTotalPoints(),
+						userData.getTotalTippPoints());
+				hwdItemRecords.add(hwdItemRecord);
+			}
+		}
+
+		return hwdItemRecords.toArray(new HwdItemRecord[hwdItemRecords.size()]);
+	}
+
+	private HwdItemRecord[] dummy() {
 		int cntTotalSeasons = 9;
 
 		// 05.02.2000 (R�ckrunde Saison 1999/2000)
