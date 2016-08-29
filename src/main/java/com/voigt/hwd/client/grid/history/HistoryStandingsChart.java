@@ -1,19 +1,8 @@
 package com.voigt.hwd.client.grid.history;
 
-import static com.voigt.hwd.client.domain.User.HUENI;
-import static com.voigt.hwd.client.domain.User.JAN;
-import static com.voigt.hwd.client.domain.User.MARCEL;
-import static com.voigt.hwd.client.domain.User.MARKUS;
-import static com.voigt.hwd.client.domain.User.MICHA;
-import static com.voigt.hwd.client.domain.User.NICO;
-import static com.voigt.hwd.client.domain.User.PATZI;
-import static com.voigt.hwd.client.domain.User.ROSSI;
-import static com.voigt.hwd.client.domain.User.STEV;
-import static com.voigt.hwd.client.domain.User.SVEN;
-import static com.voigt.hwd.client.domain.User.TOBI;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -46,11 +35,12 @@ import com.smartgwt.client.widgets.layout.VLayout;
 import com.voigt.hwd.client.AbstractBasePanel;
 import com.voigt.hwd.client.PanelFactory;
 import com.voigt.hwd.client.domain.Constants;
+import com.voigt.hwd.client.domain.HistoryData;
+import com.voigt.hwd.client.domain.Season;
 import com.voigt.hwd.client.domain.User;
+import com.voigt.hwd.client.domain.UserSeasonRecord;
 
 public class HistoryStandingsChart extends AbstractBasePanel {
-
-	private static final int SEASONS = 8;
 
 	private final static int CHART_WIDTH = 660;
 	private final static int CHART_HEIGHT = 440;
@@ -59,39 +49,35 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 
 	private static final Map<User, Plot> userPlots = new HashMap<>();
 	private static final Map<User, Boolean> selectedUsers = new HashMap<>();
-	private static final Map<User, Integer[]> data = new HashMap<>();
+	private static final Map<User, List<Integer>> data = new HashMap<>();
 
 	static {
-		Integer[] hueni = new Integer[] { 1, 3, 3, 4, 2, 4, 4, 8, 9, 5, 0 };
-		Integer[] micha = new Integer[] { 2, 2, 2, 3, 3, 1, 3, 7, 3, 2, 0 };
-		Integer[] stev = new Integer[] { 3, 1, 4, 5, 1, 2, 2, 2, 1, 8, 0 };
-		Integer[] nico = new Integer[] { 0, 0, 1, 1, 4, 3, 1, 1, 2, 1, 0 };
-		Integer[] markus = new Integer[] { 0, 0, 5, 6, 6, 6, 5, 4, 8, 9, 0 };
-		Integer[] tobi = new Integer[] { 0, 0, 0, 2, 5, 5, 7, 5, 4, 7, 0 };
-		Integer[] marcel = new Integer[] { 0, 0, 0, 0, 0, 0, 6, 9, 10, 11, 0 };
-		Integer[] jan = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 3, 7, 3, 0 };
-		Integer[] patzi = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 6, 11, 6, 0 };
-		Integer[] sven = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 5, 4, 0 };
-		Integer[] rossi = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 6, 10, 0 };
+		List<Season> seasons2 = HistoryData.getSeasons();
+		for (Season season : seasons2) {
+			Set<User> users = season.getUsers().keySet();
 
-		data.put(HUENI, hueni);
-		data.put(MICHA, micha);
-		data.put(STEV, stev);
-		data.put(NICO, nico);
-		data.put(MARKUS, markus);
-		data.put(TOBI, tobi);
-		data.put(MARCEL, marcel);
-		data.put(JAN, jan);
-		data.put(PATZI, patzi);
-		data.put(SVEN, sven);
-		data.put(ROSSI, rossi);
+			for (User user : User.values()) {
+				int place = 0;
+				if (users.contains(user)) {
+					UserSeasonRecord userSeasonRecord = season.getUsers().get(user);
+					place = userSeasonRecord.getPlace();
+				}
+				List<Integer> list = data.get(user);
+				if (list == null) {
+					list = new LinkedList<>();
+					data.put(user, list);
+				}
+				list.add(Integer.valueOf(place));
+			}
+
+		}
 
 		for (User user : User.values()) {
 			Data userData = getData(user);
 			if (userData != null) {
 				Color color = getColor(user);
 				Plot plot = Plots.newPlot(userData, color);
-				plot.addShapeMarkers(getShape(user), color, SEASONS);
+				plot.addShapeMarkers(getShape(user), color, seasons2.size());
 				userPlots.put(user, plot);
 				selectedUsers.put(user, Boolean.TRUE);
 			}
@@ -165,7 +151,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	}
 
 	private static Data getData(User user) {
-		Integer[] integers = data.get(user);
+		List<Integer> integers = data.get(user);
 		List<Integer> list = getLineDataAsList(integers);
 		return Data.newData(list);
 	}
@@ -314,9 +300,9 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 
 	}
 
-	private static List<Integer> getLineDataAsList(Integer[] array) {
+	private static List<Integer> getLineDataAsList(List<Integer> integers) {
 		List<Integer> list = new ArrayList<>();
-		for (Integer i : array) {
+		for (Integer i : integers) {
 			i = Integer.valueOf(110 - (i.intValue() * 10));
 			list.add(i);
 		}
