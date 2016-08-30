@@ -38,8 +38,9 @@ import com.voigt.hwd.client.domain.User;
 
 public class HistoryStandingsChart extends AbstractBasePanel {
 
-	private final static int CHART_WIDTH = 660;
-	private final static int CHART_HEIGHT = 440;
+	private final static int CHART_WIDTH = 800;
+	private final static int CHART_HEIGHT = 370; // no more than 300k px allowed
+	private static final String PX = "px";
 
 	private static final String DESCRIPTION = "<p>Die Platzierungen in den einzelnen Jahren im Überblick</p>";
 
@@ -89,7 +90,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		layout.addMember(label);
 
 		final Img img = new Img(getChartImageUrl());
-		img.setSize(CHART_WIDTH + "px", CHART_HEIGHT + "px");
+		img.setSize(CHART_WIDTH + PX, CHART_HEIGHT + PX);
 		img.setOverflow(Overflow.AUTO);
 
 		ChangedHandler changedHandler = new CheckboxItemChangedHandler(img);
