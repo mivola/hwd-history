@@ -1,24 +1,24 @@
-package com.voigt.hwd.client.history;
+package com.voigt.hwd.client.history.grid;
 
 import java.util.Date;
 
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 import com.voigt.hwd.client.domain.Place;
 
-public class HwdItemRecord extends ListGridRecord {
+public class StatisticalGridRecord extends ListGridRecord {
 
-	protected final static String USER_ID_FIELD = "userId";
-	protected final static String USER_NICKNAME_FIELD = "userNickname";
+	public final static String USER_ID_FIELD = "userId";
+	public final static String USER_NICKNAME_FIELD = "userNickname";
 	public final static String JOINED_FIELD = "joined";
-	protected final static String CNT_SEASONS_FIELD = "cntSeasons";
-	protected final static String CNT_ALL_TIME_POINTS_FIELD = "cntAllTimePoints";
-	protected final static String CNT_FIRST_PLACE_FIELD = "cntFirstPlace";
-	protected final static String CNT_SECOND_PLACE_FIELD = "cntSecondPlace";
-	protected final static String CNT_THIRD_PLACE_FIELD = "cntThirdPlace";
-	protected final static String CNT_LAST_PLACE_FIELD = "cntLastPlace";
-	protected final static String TOTAL_POINTS_FIELD = "totalPoints";
+	public final static String CNT_SEASONS_FIELD = "cntSeasons";
+	public final static String CNT_ALL_TIME_POINTS_FIELD = "cntAllTimePoints";
+	public final static String CNT_FIRST_PLACE_FIELD = "cntFirstPlace";
+	public final static String CNT_SECOND_PLACE_FIELD = "cntSecondPlace";
+	public final static String CNT_THIRD_PLACE_FIELD = "cntThirdPlace";
+	public final static String CNT_LAST_PLACE_FIELD = "cntLastPlace";
+	public final static String TOTAL_POINTS_FIELD = "totalPoints";
 	public final static String POINTS_PER_SEASON_FIELD = "pointsPerSeason";
-	protected static final String TOTAL_TIPP_POINTS_FIELD = "totalTippPoints";
+	public static final String TOTAL_TIPP_POINTS_FIELD = "totalTippPoints";
 	public static final String TIPP_POINTS_PER_SEASON_FIELD = "tippPointsPerSeason";
 
 	// used for getter/setter generation
@@ -35,7 +35,7 @@ public class HwdItemRecord extends ListGridRecord {
 	// private int totalTippPoints;
 	// private float tippPointsPerSeason;
 
-	public HwdItemRecord(int userId, String userNickname, Date joined, int cntSeasons, int cntFirstPlace,
+	public StatisticalGridRecord(int userId, String userNickname, Date joined, int cntSeasons, int cntFirstPlace,
 			int cntSecondPlace, int cntThirdPlace, int cntLastPlace, float totalPoints, int totalTippPoints) {
 		setUserId(userId);
 		setUserNickname(userNickname);
@@ -52,7 +52,8 @@ public class HwdItemRecord extends ListGridRecord {
 		setTippPointsPerSeason((float) totalTippPoints / (float) cntSeasons);
 	}
 
-	public HwdItemRecord addSeason(int year, Place place, float points, int tippPoints) {
+	@Deprecated
+	public StatisticalGridRecord addSeason(int year, Place place, float points, int tippPoints) {
 		setCntSeasons(getCntSeasons() + 1);
 		setTotalPoints(getTotalPoints() + points);
 		setTotalTippPoints(getTotalTippPoints() + tippPoints);

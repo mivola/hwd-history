@@ -1,4 +1,4 @@
-package com.voigt.hwd.client.grid.history;
+package com.voigt.hwd.client.history.overview;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.types.Alignment;
@@ -19,6 +19,7 @@ import com.smartgwt.client.widgets.form.fields.LinkItem;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
+import com.voigt.hwd.client.history.overview.data.HistoryOverviewData;
 
 public class HistoryOverviewWindow extends Window {
 

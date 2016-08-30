@@ -1,4 +1,4 @@
-package com.voigt.hwd.client.grid.history;
+package com.voigt.hwd.client.history.overview;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.smartgwt.client.types.TabBarControls;
@@ -12,6 +12,8 @@ import com.smartgwt.client.widgets.tab.TabSet;
 import com.voigt.hwd.client.AbstractBasePanel;
 import com.voigt.hwd.client.PanelFactory;
 import com.voigt.hwd.client.domain.HistoryData;
+import com.voigt.hwd.client.history.overview.data.HistoryOverviewData;
+import com.voigt.hwd.client.history.overview.data.HistoryOverviewDataProvider;
 import com.voigt.hwd.client.i18n.HwdMessages;
 import com.voigt.hwd.client.i18n.HwdMessagesFactory;
 

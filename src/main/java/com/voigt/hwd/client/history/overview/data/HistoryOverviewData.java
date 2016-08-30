@@ -1,4 +1,4 @@
-package com.voigt.hwd.client.grid.history;
+package com.voigt.hwd.client.history.overview.data;
 
 public class HistoryOverviewData {
 
@@ -10,7 +10,7 @@ public class HistoryOverviewData {
 
 	/*
 	 * filename of the screenshot; no path needed; image must reside in a
-	 * configured directory
+	 * configured directory, e.g. public\images\hwd\history\
 	 */
 	private String imageFilename;
 

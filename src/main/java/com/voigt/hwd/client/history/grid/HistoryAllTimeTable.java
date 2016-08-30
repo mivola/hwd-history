@@ -1,4 +1,4 @@
-package com.voigt.hwd.client.grid.history;
+package com.voigt.hwd.client.history.grid;
 
 import java.util.Date;
 
@@ -15,8 +15,7 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.voigt.hwd.client.AbstractBasePanel;
 import com.voigt.hwd.client.PanelFactory;
-import com.voigt.hwd.client.history.HwdHistoryLocalDS;
-import com.voigt.hwd.client.history.HwdItemRecord;
+import com.voigt.hwd.client.history.grid.data.GridDataSource;
 
 public class HistoryAllTimeTable extends AbstractBasePanel {
 
@@ -52,7 +51,7 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 		label.setContents("HWD - Ewige Tabelle");
 		layout.addMember(label);
 
-		final DataSource dataSource = HwdHistoryLocalDS.getInstance();
+		final DataSource dataSource = GridDataSource.getInstance();
 
 		final ListGrid listGrid = new ListGrid();
 		listGrid.setWidth100();
@@ -62,7 +61,7 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 
 		// http://forums.smartclient.com/showthread.php?p=14440#post14440
 		// http://abhijeetmaharana.com/blog/2008/12/12/override-rendering-of-column-from-smartgwt-data-source/
-		ListGridField joinedField = new ListGridField(HwdItemRecord.JOINED_FIELD);
+		ListGridField joinedField = new ListGridField(StatisticalGridRecord.JOINED_FIELD);
 
 		CellFormatter dateFormatter = new CellFormatter() {
 			public String format(Object value, ListGridRecord record, int rowNum, int colNum) {
@@ -104,8 +103,8 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 			}
 		};
 
-		ListGridField pointsPerSeasonField = new ListGridField(HwdItemRecord.POINTS_PER_SEASON_FIELD);
-		ListGridField tippPointsPerSeasonField = new ListGridField(HwdItemRecord.TIPP_POINTS_PER_SEASON_FIELD);
+		ListGridField pointsPerSeasonField = new ListGridField(StatisticalGridRecord.POINTS_PER_SEASON_FIELD);
+		ListGridField tippPointsPerSeasonField = new ListGridField(StatisticalGridRecord.TIPP_POINTS_PER_SEASON_FIELD);
 		pointsPerSeasonField.setCellFormatter(floatFormatter);
 		tippPointsPerSeasonField.setCellFormatter(floatFormatter);
 

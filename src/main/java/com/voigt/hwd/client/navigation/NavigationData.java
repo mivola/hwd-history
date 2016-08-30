@@ -3,9 +3,9 @@ package com.voigt.hwd.client.navigation;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.voigt.hwd.client.grid.history.HistoryAllTimeTable;
-import com.voigt.hwd.client.grid.history.HistoryOverview;
-import com.voigt.hwd.client.grid.history.HistoryStandingsChart;
+import com.voigt.hwd.client.history.grid.HistoryAllTimeTable;
+import com.voigt.hwd.client.history.overview.HistoryOverview;
+import com.voigt.hwd.client.history.standings.HistoryStandingsChart;
 
 public class NavigationData {
 

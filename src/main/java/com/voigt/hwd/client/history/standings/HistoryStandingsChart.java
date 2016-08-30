@@ -1,4 +1,4 @@
-package com.voigt.hwd.client.grid.history;
+package com.voigt.hwd.client.history.standings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
