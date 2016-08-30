@@ -161,28 +161,30 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 
 	private static Color getColor(User user) {
 		switch (user) {
+		// those colors need to match the CSS colors defined in hwd.css (e.g.
+		// hueniCheckboxTextbox)
 		case HUENI:
-			return Color.AQUA;
+			return Color.newColor("00FF00");
 		case MICHA:
-			return Color.BLACK;
+			return Color.newColor("8A2BE2");
 		case STEV:
-			return Color.BLUE;
+			return Color.newColor("FF7F50");
 		case NICO:
-			return Color.BROWN;
+			return Color.newColor("00FFFF");
 		case MARKUS:
-			return Color.DARKRED;
+			return Color.newColor("A52A2A");
 		case TOBI:
-			return Color.FORESTGREEN;
+			return Color.newColor("1E90FF");
 		case MARCEL:
-			return Color.DARKGRAY;
+			return Color.newColor("00FF7F");
 		case JAN:
-			return Color.ORANGE;
+			return Color.newColor("FF0000");
 		case PATZI:
-			return Color.STEELBLUE;
+			return Color.newColor("D2B48C");
 		case ROSSI:
-			return Color.PINK;
+			return Color.newColor("8FBC8F");
 		case SVEN:
-			return Color.LIMEGREEN;
+			return Color.newColor("FF00FF");
 		default:
 			return Color.POWDERBLUE;
 		}
