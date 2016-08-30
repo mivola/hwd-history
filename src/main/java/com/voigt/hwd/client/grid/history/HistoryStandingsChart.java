@@ -2,7 +2,6 @@ package com.voigt.hwd.client.grid.history;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,11 +33,8 @@ import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.voigt.hwd.client.AbstractBasePanel;
 import com.voigt.hwd.client.PanelFactory;
-import com.voigt.hwd.client.domain.Constants;
 import com.voigt.hwd.client.domain.HistoryData;
-import com.voigt.hwd.client.domain.Season;
 import com.voigt.hwd.client.domain.User;
-import com.voigt.hwd.client.domain.UserSeasonRecord;
 
 public class HistoryStandingsChart extends AbstractBasePanel {
 
@@ -49,40 +45,18 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 
 	private static final Map<User, Plot> userPlots = new HashMap<>();
 	private static final Map<User, Boolean> selectedUsers = new HashMap<>();
-	private static final Map<User, List<Integer>> data = new HashMap<>();
 
 	static {
-		List<Season> seasons2 = HistoryData.getSeasons();
-		for (Season season : seasons2) {
-			Set<User> users = season.getUsers().keySet();
-
-			for (User user : User.values()) {
-				int place = 0;
-				if (users.contains(user)) {
-					UserSeasonRecord userSeasonRecord = season.getUsers().get(user);
-					place = userSeasonRecord.getPlace();
-				}
-				List<Integer> list = data.get(user);
-				if (list == null) {
-					list = new LinkedList<>();
-					data.put(user, list);
-				}
-				list.add(Integer.valueOf(place));
-			}
-
-		}
-
 		for (User user : User.values()) {
 			Data userData = getData(user);
 			if (userData != null) {
 				Color color = getColor(user);
 				Plot plot = Plots.newPlot(userData, color);
-				plot.addShapeMarkers(getShape(user), color, seasons2.size());
+				plot.addShapeMarkers(getShape(user), color, HistoryData.getSeasons().size());
 				userPlots.put(user, plot);
 				selectedUsers.put(user, Boolean.TRUE);
 			}
 		}
-
 	}
 
 	public static class Factory implements PanelFactory {
@@ -151,7 +125,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	}
 
 	private static Data getData(User user) {
-		List<Integer> integers = data.get(user);
+		List<Integer> integers = HistoryData.getStandingsData(user);
 		List<Integer> list = getLineDataAsList(integers);
 		return Data.newData(list);
 	}
@@ -263,11 +237,11 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		lineChart.setSize(CHART_WIDTH, CHART_HEIGHT);
 
 		// lineChart.addHorizontalRangeMarker(33.3, 66.6, LIGHTBLUE);
-		int seasons = Constants.END_YEAR - Constants.START_YEAR;
+		int seasons = HistoryData.getEndYear() - HistoryData.getStartYear();
 		lineChart.setGrid(100d / seasons, 100d / User.values().length + 1, 3, 3);
 
 		List<String> xLabels = new ArrayList<>();
-		for (int i = Constants.START_YEAR; i <= Constants.END_YEAR; i++) {
+		for (int i = HistoryData.getStartYear(); i <= HistoryData.getEndYear(); i++) {
 			xLabels.add(String.valueOf(i));
 		}
 		lineChart.addXAxisLabels(AxisLabelsFactory.newAxisLabels(xLabels));

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.voigt.hwd.client.domain.CalculatedData;
+import com.voigt.hwd.client.domain.StatisticalAllTimeData;
 import com.voigt.hwd.client.domain.HistoryData;
 import com.voigt.hwd.client.domain.Place;
 import com.voigt.hwd.client.domain.User;
@@ -23,7 +23,7 @@ public class HwdItemData {
 	public static HwdItemRecord[] getNewRecords() {
 		List<HwdItemRecord> hwdItemRecords = new ArrayList<>();
 		for (User user : User.values()) {
-			CalculatedData userData = HistoryData.getUserData(user);
+			StatisticalAllTimeData userData = HistoryData.getStatisticalAllTimeData(user);
 			if (userData != null) {
 				HwdItemRecord hwdItemRecord = new HwdItemRecord(user.getId(), user.getName(), user.getJoined(),
 						userData.getCntSeasons(), userData.getCntFirstPlace(), userData.getCntSecondPlace(),

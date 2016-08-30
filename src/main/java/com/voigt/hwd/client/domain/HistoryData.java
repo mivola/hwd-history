@@ -1,7 +1,10 @@
 package com.voigt.hwd.client.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +16,8 @@ public class HistoryData {
 
 	private static List<Season> seasons = new ArrayList<>();
 
-	private static Map<User, CalculatedData> userData = new HashMap<>();
+	private static Map<User, StatisticalAllTimeData> statisticalAllTimeData = new HashMap<>();
+	private static Map<User, List<Integer>> standingsData = new HashMap<>();
 
 	static {
 		Season season2001 = new Season(2001);
@@ -47,21 +51,25 @@ public class HistoryData {
 				endYear = season.getYear();
 			}
 
+			Collections.sort(seasons, new Comparator<Season>() {
+				public int compare(Season o1, Season o2) {
+					return o1.getYear() - o2.getYear();
+				}
+			});
+
 			Map<User, UserSeasonRecord> users = season.getUsers();
 			Set<User> keySet = users.keySet();
 			for (User user : keySet) {
 				UserSeasonRecord record = users.get(user);
-				CalculatedData calculatedData = userData.get(user);
-				if (calculatedData == null) {
-					calculatedData = new CalculatedData();
-					userData.put(user, calculatedData);
+				StatisticalAllTimeData allTimeData = statisticalAllTimeData.get(user);
+				if (allTimeData == null) {
+					allTimeData = new StatisticalAllTimeData();
+					statisticalAllTimeData.put(user, allTimeData);
 				}
-				calculatedData.increaseCntSeasons().increaseTotalPoints(record.getPoints())
+				allTimeData.increaseCntSeasons().increaseTotalPoints(record.getPoints())
 						.increaseTotalTippPoints(record.getTippPoints())
 						.increaseCntPlace(record.getPlace(), season.getUsers().size());
-
 			}
-
 		}
 	}
 
@@ -69,12 +77,34 @@ public class HistoryData {
 		return seasons;
 	}
 
-	public static Map<User, CalculatedData> getUserData() {
-		return userData;
+	public static Map<User, StatisticalAllTimeData> getStatisticalAllTimeData() {
+		return statisticalAllTimeData;
 	}
 
-	public static CalculatedData getUserData(User user) {
-		return userData.get(user);
+	public static StatisticalAllTimeData getStatisticalAllTimeData(User user) {
+		return statisticalAllTimeData.get(user);
+	}
+
+	public static List<Integer> getStandingsData(User user) {
+
+		List<Integer> list = standingsData.get(user);
+		if (list == null) {
+			list = new LinkedList<>();
+			standingsData.put(user, list);
+
+			for (Season season : seasons) {
+				Set<User> users = season.getUsers().keySet();
+
+				int place = 0;
+				if (users.contains(user)) {
+					UserSeasonRecord userSeasonRecord = season.getUsers().get(user);
+					place = userSeasonRecord.getPlace();
+				}
+				list.add(Integer.valueOf(place));
+
+			}
+		}
+		return list;
 	}
 
 	public static int getStartYear() {
@@ -89,7 +119,8 @@ public class HistoryData {
 		startYear = Integer.MAX_VALUE;
 		endYear = 0;
 		seasons = new ArrayList<>();
-		userData = new HashMap<>();
+		statisticalAllTimeData = new HashMap<>();
+		standingsData = new HashMap<>();
 	}
 
 }

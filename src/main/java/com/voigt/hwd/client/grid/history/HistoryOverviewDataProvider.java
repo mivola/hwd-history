@@ -3,7 +3,7 @@ package com.voigt.hwd.client.grid.history;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.voigt.hwd.client.domain.Constants;
+import com.voigt.hwd.client.domain.HistoryData;
 
 public class HistoryOverviewDataProvider {
 
@@ -61,7 +61,7 @@ public class HistoryOverviewDataProvider {
 
 	public HistoryOverviewData getData(int season) {
 
-		int index = season - Constants.START_YEAR;
+		int index = season - HistoryData.getStartYear();
 		if (historyOverviewList.size() > index) {
 			return historyOverviewList.get(index);
 		}
