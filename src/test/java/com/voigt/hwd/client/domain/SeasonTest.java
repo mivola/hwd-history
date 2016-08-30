@@ -29,11 +29,9 @@ public class SeasonTest {
 		int endYear = 2979;
 
 		HistoryData.addSeason(new Season(1999));
-		HistoryData.addSeason(new Season(2000));
 		HistoryData.addSeason(new Season(endYear));
 		HistoryData.addSeason(new Season(2000));
 		HistoryData.addSeason(new Season(startYear));
-		HistoryData.addSeason(new Season(endYear));
 
 		assertEquals(4, HistoryData.getSeasons().size());
 		assertEquals(endYear, HistoryData.getEndYear());
@@ -46,6 +44,25 @@ public class SeasonTest {
 			previousYear = season.getYear();
 		}
 		assertEquals(endYear, previousYear);
+	}
+
+	@Test(expected = InvalidBusinessDataException.class)
+	public void testAddingTheSameSeasonTwice() throws Exception {
+		Season season = new Season(2000);
+		HistoryData.addSeason(season);
+		HistoryData.addSeason(season);
+	}
+
+	@Test(expected = InvalidBusinessDataException.class)
+	public void testAddingTheSimilarSeasonTwice() throws Exception {
+		HistoryData.addSeason(new Season(2000));
+		HistoryData.addSeason(new Season(2000));
+	}
+
+	@Test(expected = InvalidBusinessDataException.class)
+	public void testAddingTheSamePlaceTwice() throws Exception {
+		HistoryData.addSeason(new Season(2000).addUser(User.HUENI, new UserSeasonRecord(1, 0, 0)).addUser(User.STEV,
+				new UserSeasonRecord(1, 0, 0)));
 	}
 	
 }

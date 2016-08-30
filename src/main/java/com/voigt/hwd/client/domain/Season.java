@@ -1,6 +1,8 @@
 package com.voigt.hwd.client.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Season {
@@ -8,6 +10,8 @@ public class Season {
 	private int year;
 
 	private Map<User, UserSeasonRecord> users = new HashMap<>();
+
+	private List<Integer> places = new ArrayList<>();
 
 	public Season(int year) {
 		this.year = year;
@@ -21,9 +25,15 @@ public class Season {
 		this.year = year;
 	}
 
-	public Season addUser(User user, UserSeasonRecord record) {
+	public Season addUser(User user, UserSeasonRecord record) throws InvalidBusinessDataException {
+		if (users.containsKey(user)) {
+			throw new InvalidBusinessDataException("user is already set for this season: " + user);
+		}
+		if (places.contains(record.getPlace())) {
+			throw new InvalidBusinessDataException("place is already set for this season: " + record.getPlace());
+		}
 		users.put(user, record);
-
+		places.add(record.getPlace());
 		return this;
 	}
 
@@ -55,6 +65,11 @@ public class Season {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Season [year=" + year + "]";
 	}
 
 }

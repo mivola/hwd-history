@@ -96,6 +96,13 @@ public class HistoryDataTest {
 
 	}
 
+	@Test(expected = InvalidBusinessDataException.class)
+	public void testAddingTheSameUserTwice() throws Exception {
+		Season season = new Season(2000);
+		season.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173)).addUser(User.HUENI,
+				new UserSeasonRecord(2, 12, 177));
+	}
+
 	private void addSecondSeason() {
 		Season season2000 = new Season(2000);
 		season2000.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173))
