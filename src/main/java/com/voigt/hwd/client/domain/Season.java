@@ -7,11 +7,15 @@ import java.util.Map;
 
 public class Season {
 
+	private static final int WINNER = 1;
+
 	private int year;
 
 	private Map<User, UserSeasonRecord> users = new HashMap<>();
 
 	private List<Integer> places = new ArrayList<>();
+
+	private List<User> winners = new ArrayList<>();
 
 	public Season(int year) {
 		this.year = year;
@@ -32,13 +36,26 @@ public class Season {
 		if (places.contains(record.getPlace())) {
 			throw new InvalidBusinessDataException("place is already set for this season: " + record.getPlace());
 		}
+		
 		users.put(user, record);
 		places.add(record.getPlace());
+		
+		if (record.getPlace() == WINNER) {
+			winners.add(user);
+		}
 		return this;
 	}
 
 	public Map<User, UserSeasonRecord> getUsers() {
 		return users;
+	}
+
+	public int getCntUsers() {
+		return users.size();
+	}
+
+	public List<User> getWinners() {
+		return winners;
 	}
 
 	@Override

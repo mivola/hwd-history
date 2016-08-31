@@ -1,9 +1,13 @@
 package com.voigt.hwd.client.history.overview.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.google.gwt.i18n.client.NumberFormat;
 import com.voigt.hwd.client.domain.HistoryData;
+import com.voigt.hwd.client.domain.Season;
+import com.voigt.hwd.client.domain.User;
 
 public class HistoryOverviewDataProvider {
 
@@ -54,9 +58,43 @@ public class HistoryOverviewDataProvider {
 
 		String description2007 = "";
 		HistoryOverviewData data2007 = new HistoryOverviewData(749, 577, 11, "hwd07_08.png",
-				"Hüni, Nico, Markus, Janosch (17)", description2007, "Stev", hwdBaseURL + "hwd07_08", "");
+				"Hüni, Nico, Markus, Janosch (17)", description2007, "Stev", hwdBaseURL + getFilename(2007), "");
 		historyOverviewList.add(data2007);
 
+		historyOverviewList.clear();
+		List<Season> seasons = HistoryData.getSeasons();
+		for (Season season : seasons) {
+			String filenameAndUrlSuffix = getFilename(season.getYear());
+			String imageFilename = filenameAndUrlSuffix + ".png";
+			User[] winners = season.getWinners().toArray(new User[season.getWinners().size()]);
+			String winnersString = Arrays.toString(winners).replace("[", "").replace("]", "");
+			String url = hwdBaseURL + filenameAndUrlSuffix;
+			String title = "";
+			String maxPoints = "";
+			String description = "";
+			int imageHeight = 500;
+			int imageWidth = 500;
+			HistoryOverviewData historyOverviewData = new HistoryOverviewData(imageHeight, imageWidth,
+					season.getCntUsers(), imageFilename, maxPoints, description, winnersString, url, title);
+			historyOverviewList.add(historyOverviewData);
+		}
+	}
+
+	String getFilename(int year) {
+		int startYear;
+		if (year < 2000) {
+			startYear = year - 1900;
+		} else {
+			startYear = year - 2000;
+		}
+
+		int endYear = startYear + 1;
+		if (endYear > 99) {
+			endYear = endYear - 100;
+		}
+		NumberFormat format = NumberFormat.getFormat("00");
+		return "hwd" + format.format(startYear) + "_" + format.format(endYear);
+		// return "";
 	}
 
 	public HistoryOverviewData getData(int season) {

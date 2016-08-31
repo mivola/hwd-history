@@ -3,7 +3,6 @@ package com.voigt.hwd.client.history.grid;
 import java.util.Date;
 
 import com.smartgwt.client.widgets.grid.ListGridRecord;
-import com.voigt.hwd.client.domain.Place;
 
 public class StatisticalGridRecord extends ListGridRecord {
 
@@ -50,30 +49,6 @@ public class StatisticalGridRecord extends ListGridRecord {
 		setPointsPerSeason(totalPoints / cntSeasons);
 		setTotalTippPoints(totalTippPoints);
 		setTippPointsPerSeason((float) totalTippPoints / (float) cntSeasons);
-	}
-
-	@Deprecated
-	public StatisticalGridRecord addSeason(int year, Place place, float points, int tippPoints) {
-		setCntSeasons(getCntSeasons() + 1);
-		setTotalPoints(getTotalPoints() + points);
-		setTotalTippPoints(getTotalTippPoints() + tippPoints);
-		switch (place) {
-		case FIRST:
-			setCntFirstPlace(getCntFirstPlace() + 1);
-			break;
-		case SECOND:
-			setCntSecondPlace(getCntSecondPlace() + 1);
-			break;
-		case THIRD:
-			setCntThirdPlace(getCntThirdPlace() + 1);
-			break;
-		case LAST:
-			setCntLastPlace(getCntLastPlace() + 1);
-			break;
-		default:
-			break;
-		}
-		return this;
 	}
 
 	public void setCntAllTimePoints(int cntFirstPlace, int cntSecondPlace, int cntThirdPlace) {
