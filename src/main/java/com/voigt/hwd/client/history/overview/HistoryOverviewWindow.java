@@ -27,17 +27,14 @@ public class HistoryOverviewWindow extends Window {
 
 	public HistoryOverviewWindow(HistoryOverviewData data) {
 		this.data = data;
-
 		createHistoryOverview();
 	}
 
 	private void createHistoryOverview() {
 
 		this.setWidth100();
-		// descWindow.setMaxHeight(20);
 		this.setMargin(10);
 		this.setMembersMargin(10);
-		this.setTitle(data.getTitle());
 		this.setCanDrag(false);
 		this.setCanDragReposition(false);
 		this.setCanDragResize(false);
@@ -129,29 +126,25 @@ public class HistoryOverviewWindow extends Window {
 			noLinkLabel.setTitle("nicht vorhanden");
 			noLinkLabel.setAutoFit(true);
 			return noLinkLabel;
-		} else {
-			LinkItem link = new LinkItem();
-			link.setName("linkToUrl");
-			link.setTitle("");
-			link.setValue(data.getUrl());
-			link.setTarget("_blank");
-			link.setPrompt("open in new Window");
-
-			DynamicForm form = new DynamicForm();
-			form.setFields(link);
-			form.setMargin(0);
-			form.setPadding(0);
-
-			return form;
 		}
+		LinkItem link = new LinkItem();
+		link.setName("linkToUrl");
+		link.setTitle("");
+		link.setValue(data.getUrl());
+		link.setTarget("_blank");
+		link.setPrompt("open in new Window");
 
+		DynamicForm form = new DynamicForm();
+		form.setFields(link);
+		form.setMargin(0);
+		form.setPadding(0);
+
+		return form;
 	}
 
 	private IButton createShowScreenshotButton() {
 
 		IButton showScreenshotButton = new IButton("Öffne Screenshot");
-		// showScreenshot.setMargin(15);
-		// showScreenshotButton.setLeft(15);
 
 		if (data.getImageFilename() == null || data.getImageFilename().equals("")) {
 
@@ -167,8 +160,10 @@ public class HistoryOverviewWindow extends Window {
 				public void onClick(ClickEvent event) {
 
 					final Window modalImgWindow = new Window();
-					modalImgWindow.setShowModalMask(true);
+					modalImgWindow.setShowModalMask(Boolean.TRUE);
 					modalImgWindow.setTitle("");
+					modalImgWindow.setAutoCenter(Boolean.TRUE);
+					modalImgWindow.setDismissOnOutsideClick(Boolean.TRUE);
 
 					int clientHeight = com.google.gwt.user.client.Window.getClientHeight();
 					int clientWidth = com.google.gwt.user.client.Window.getClientWidth();
@@ -208,11 +203,9 @@ public class HistoryOverviewWindow extends Window {
 					vLayout.setAlign(Alignment.CENTER);
 
 					img.addClickHandler(new ClickHandler() {
-
 						public void onClick(ClickEvent event) {
 							modalImgWindow.destroy();
 						}
-
 					});
 
 					modalImgWindow.addItem(vLayout);
@@ -220,9 +213,7 @@ public class HistoryOverviewWindow extends Window {
 
 					modalImgWindow.show();
 				}
-
 			});
-
 		}
 
 		showScreenshotButton.setAutoFit(true);

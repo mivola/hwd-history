@@ -23,10 +23,8 @@ public class HistoryOverviewData {
 	/* url to the live system */
 	private String url;
 
-	private String title;
-
 	public HistoryOverviewData(int imageHeight, int imageWidth, int cntParticipants, String imageFilename,
-			String maxPoints, String description, String winner, String url, String title) {
+			String maxPoints, String description, String winner, String url) {
 		this.imageHeight = imageHeight;
 		this.imageWidth = imageWidth;
 		this.cntParticipants = cntParticipants;
@@ -35,7 +33,6 @@ public class HistoryOverviewData {
 		this.description = description;
 		this.winner = winner;
 		this.url = url;
-		this.title = title;
 	}
 
 	public int getImageHeight() {
@@ -100,14 +97,6 @@ public class HistoryOverviewData {
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 }

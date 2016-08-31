@@ -17,16 +17,29 @@ public class Season {
 
 	private List<User> winners = new ArrayList<>();
 
+	private String description;
+
+	private int imageHeight;
+
+	private int imageWidth;
+
+	private boolean hasLiveSystem;
+
+	private String maxPoints;
+
+	@Deprecated
 	public Season(int year) {
 		this.year = year;
 	}
 
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
+	public Season(int year, String description, int imageHeight, int imageWidth, String maxPoints,
+			boolean hasLiveSystem) {
 		this.year = year;
+		this.description = description;
+		this.imageHeight = imageHeight;
+		this.imageWidth = imageWidth;
+		this.maxPoints = maxPoints;
+		this.hasLiveSystem = hasLiveSystem;
 	}
 
 	public Season addUser(User user, UserSeasonRecord record) throws InvalidBusinessDataException {
@@ -46,6 +59,10 @@ public class Season {
 		return this;
 	}
 
+	public int getYear() {
+		return year;
+	}
+
 	public Map<User, UserSeasonRecord> getUsers() {
 		return users;
 	}
@@ -56,6 +73,26 @@ public class Season {
 
 	public List<User> getWinners() {
 		return winners;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getImageHeight() {
+		return imageHeight;
+	}
+
+	public int getImageWidth() {
+		return imageWidth;
+	}
+
+	public String getMaxPoints() {
+		return maxPoints;
+	}
+
+	public boolean hasLiveSystem() {
+		return hasLiveSystem;
 	}
 
 	@Override

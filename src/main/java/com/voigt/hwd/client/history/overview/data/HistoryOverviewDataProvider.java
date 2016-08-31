@@ -16,51 +16,6 @@ public class HistoryOverviewDataProvider {
 
 	public HistoryOverviewDataProvider() {
 
-		String description1999 = "Die HWD-Premiere haben Hüni und Micha zur Rückrunde der Saison 1999/2000 eröffnet. Und das mit so antiken und unpassenden Mitteln wie Mircosoft Word! Später kam dann auch noch Stev dazu. Damals war der Einsatz noch wesentlich geringer: Der Verlierer eines Spieltags zahlt dem/n Gewinner/n ein Cola-Weizen. Jaja, das waren noch Zeiten ... ;-)";
-		HistoryOverviewData data1999 = new HistoryOverviewData(1062, 633, 3, "hwd99_00.png", "", description1999,
-				"Hüni", "", "Die erste (halbe) Saison");
-		historyOverviewList.add(data1999);
-
-		String description2000 = "Die zweite Saison haben wir zu dritt komplett durchgespielt, Und dank Stev \"Excel-Gott\" Thomas sogar mit vorzüglichen Excel-Tabellen :-)";
-		HistoryOverviewData data2000 = new HistoryOverviewData(636, 429, 3, "hwd00_01.png", "Hüni (18)",
-				description2000, "Stev", "", "Die erste komplette Saison");
-		historyOverviewList.add(data2000);
-
-		String description2001 = "In der Saison 2001/2002 haben wir unsere Mitgliederzahl verdoppelt. Gleich zu Beginn sind Nico und Markus eingestiegen, später (außerhalb der Wertung, zum Warmmachen sozusagen ;-) sogar noch Buschi. In dieser Saison wurde zur Spannungssteigerung auch der Extratipp engeführt.";
-		HistoryOverviewData data2001 = new HistoryOverviewData(1114, 842, 5, "hwd01_02.png", "Micha, Nico (19)",
-				description2001, "Nico", "", "");
-		historyOverviewList.add(data2001);
-
-		String description2002 = "Nach dem Warm-Up in der Vorsaison bekam 2002/2003 auch Buschi das harte Tipperleben zu spüren. 2 Spieltage vor Schluss gab es noch ein Kopf-an-Kopfrennen mit ihm, Nico und Micha. Ein Endspurt mit 2 Siegen bescherrte Nico jedoch den verdienten Sieg und damit gelang erstmals in der HWD-Geschichte eine Titelverteidigung.";
-		HistoryOverviewData data2002 = new HistoryOverviewData(1027, 876, 6, "hwd02_03.png", "Nico (17)",
-				description2002, "Nico", "", "");
-		historyOverviewList.add(data2002);
-
-		String description2003 = "";
-		HistoryOverviewData data2003 = new HistoryOverviewData(716, 617, 6, "hwd03_04.png", "Stev (17)",
-				description2003, "Stev", hwdBaseURL + "hwd03_04", "");
-		historyOverviewList.add(data2003);
-
-		String description2004 = "";
-		HistoryOverviewData data2004 = new HistoryOverviewData(925, 655, 6, "hwd04_05.png", "Nico (17)",
-				description2004, "Micha", hwdBaseURL + "hwd04_05", "");
-		historyOverviewList.add(data2004);
-
-		String description2005 = "Einführung Joker";
-		HistoryOverviewData data2005 = new HistoryOverviewData(727, 602, 7, "hwd05_06.png", "Micha (19)",
-				description2005, "Nico", hwdBaseURL + "hwd05_06", "");
-		historyOverviewList.add(data2005);
-
-		String description2006 = "";
-		HistoryOverviewData data2006 = new HistoryOverviewData(874, 581, 9, "hwd06_07.png", "Hüni (25)",
-				description2006, "Nico", hwdBaseURL + "hwd06_07", "");
-		historyOverviewList.add(data2006);
-
-		String description2007 = "";
-		HistoryOverviewData data2007 = new HistoryOverviewData(749, 577, 11, "hwd07_08.png",
-				"Hüni, Nico, Markus, Janosch (17)", description2007, "Stev", hwdBaseURL + getFilename(2007), "");
-		historyOverviewList.add(data2007);
-
 		historyOverviewList.clear();
 		List<Season> seasons = HistoryData.getSeasons();
 		for (Season season : seasons) {
@@ -68,14 +23,13 @@ public class HistoryOverviewDataProvider {
 			String imageFilename = filenameAndUrlSuffix + ".png";
 			User[] winners = season.getWinners().toArray(new User[season.getWinners().size()]);
 			String winnersString = Arrays.toString(winners).replace("[", "").replace("]", "");
-			String url = hwdBaseURL + filenameAndUrlSuffix;
-			String title = "";
-			String maxPoints = "";
-			String description = "";
-			int imageHeight = 500;
-			int imageWidth = 500;
+			String url = season.hasLiveSystem() ? hwdBaseURL + filenameAndUrlSuffix : "";
+			String maxPoints = season.getMaxPoints();
+			String description = season.getDescription();
+			int imageHeight = season.getImageHeight();
+			int imageWidth = season.getImageWidth();
 			HistoryOverviewData historyOverviewData = new HistoryOverviewData(imageHeight, imageWidth,
-					season.getCntUsers(), imageFilename, maxPoints, description, winnersString, url, title);
+					season.getCntUsers(), imageFilename, maxPoints, description, winnersString, url);
 			historyOverviewList.add(historyOverviewData);
 		}
 	}
@@ -91,6 +45,8 @@ public class HistoryOverviewDataProvider {
 		int endYear = startYear + 1;
 		if (endYear > 99) {
 			endYear = endYear - 100;
+		} else if (endYear == 10) {
+			endYear = endYear + 2000;
 		}
 		NumberFormat format = NumberFormat.getFormat("00");
 		return "hwd" + format.format(startYear) + "_" + format.format(endYear);
@@ -103,8 +59,7 @@ public class HistoryOverviewDataProvider {
 		if (historyOverviewList.size() > index) {
 			return historyOverviewList.get(index);
 		}
-		return new HistoryOverviewData(100, 100, 1, "", "", "", "", "", "");
-
+		return new HistoryOverviewData(100, 100, 1, "", "", "", "", "");
 	}
 
 }
