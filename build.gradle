@@ -16,6 +16,7 @@ repositories { mavenCentral() }
 apply plugin: 'war'
 apply plugin: 'gwt'
 apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 
 dependencies {
 	compile files('lib/smartgwt.jar', 'lib/smartgwt-skins.jar')
@@ -46,6 +47,15 @@ gwt {
 task cleanWar (type: Delete) {
     delete "war"
 }
+
+jacocoTestReport {
+	reports {
+		xml.enabled = true
+		html.enabled = true
+	}
+}
+
+check.dependsOn jacocoTestReport
 
 tasks.clean.dependsOn cleanWar
 tasks.eclipse.dependsOn cleanEclipse
