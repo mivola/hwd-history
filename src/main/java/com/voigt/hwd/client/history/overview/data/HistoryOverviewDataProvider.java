@@ -8,6 +8,7 @@ import com.google.gwt.i18n.client.NumberFormat;
 import com.voigt.hwd.client.domain.HistoryData;
 import com.voigt.hwd.client.domain.Season;
 import com.voigt.hwd.client.domain.User;
+import com.voigt.hwd.client.i18n.HwdMessagesFactory;
 
 public class HistoryOverviewDataProvider {
 
@@ -25,7 +26,7 @@ public class HistoryOverviewDataProvider {
 			String winnersString = Arrays.toString(winners).replace("[", "").replace("]", "");
 			String url = season.hasLiveSystem() ? hwdBaseURL + filenameAndUrlSuffix : "";
 			String maxPoints = season.getMaxPoints();
-			String description = season.getDescription();
+			String description = HwdMessagesFactory.getSeasonDescription(season.getYear());
 			int imageHeight = season.getImageHeight();
 			int imageWidth = season.getImageWidth();
 			HistoryOverviewData historyOverviewData = new HistoryOverviewData(imageHeight, imageWidth,

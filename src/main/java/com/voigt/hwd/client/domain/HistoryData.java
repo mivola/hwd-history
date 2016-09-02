@@ -9,12 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.voigt.hwd.client.i18n.HwdMessages;
-import com.voigt.hwd.client.i18n.HwdMessagesFactory;
-
 public class HistoryData {
 
-	private static final HwdMessages messages = HwdMessagesFactory.getInstance();
 	private static int startYear = Integer.MAX_VALUE;
 	private static int endYear = 0;
 
@@ -24,7 +20,7 @@ public class HistoryData {
 	private static Map<User, List<Integer>> standingsData = new HashMap<>();
 
 	static {
-		Season season2009 = new Season(2009, messages.season2009Desc(), 717, 588, "hüni (21)", true);
+		Season season2009 = new Season(2009, 717, 588, "hüni (21)", true);
 		season2009.addUser(User.HUENI, new UserSeasonRecord(1, 80.5f, 300))
 				.addUser(User.MICHA, new UserSeasonRecord(4, 65.5f, 296))
 				.addUser(User.STEV, new UserSeasonRecord(2, 69.5f, 284))
@@ -38,7 +34,7 @@ public class HistoryData {
 				.addUser(User.SVEN, new UserSeasonRecord(7, 54.5f, 266));
 		HistoryData.addSeason(season2009);
 
-		Season season2008 = new Season(2008, messages.season2008Desc(), 987, 581, "janosch (21)", true);
+		Season season2008 = new Season(2008, 987, 581, "janosch (21)", true);
 		season2008.addUser(User.HUENI, new UserSeasonRecord(5, 59, 290))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 73, 296))
 				.addUser(User.STEV, new UserSeasonRecord(8, 49, 273))
@@ -52,7 +48,7 @@ public class HistoryData {
 				.addUser(User.SVEN, new UserSeasonRecord(4, 68, 285));
 		HistoryData.addSeason(season2008);
 
-		Season season2007 = new Season(2007, messages.season2007Desc(), 749, 577, "hüni, nico, markus, janosch (17)",
+		Season season2007 = new Season(2007, 749, 577, "hüni, nico, markus, janosch (17)",
 				true);
 		season2007.addUser(User.HUENI, new UserSeasonRecord(9, 49, 252))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 67, 282))
@@ -67,7 +63,7 @@ public class HistoryData {
 				.addUser(User.SVEN, new UserSeasonRecord(5, 59, 261));
 		HistoryData.addSeason(season2007);
 
-		Season season2006 = new Season(2006, messages.season2006Desc(), 874, 581, "hüni (25)", true);
+		Season season2006 = new Season(2006, 874, 581, "hüni (25)", true);
 		season2006.addUser(User.HUENI, new UserSeasonRecord(8, 21, 210))
 				.addUser(User.MICHA, new UserSeasonRecord(7, 21.5f, 248))
 				.addUser(User.STEV, new UserSeasonRecord(2, 35, 288))
@@ -79,7 +75,7 @@ public class HistoryData {
 				.addUser(User.PATZI, new UserSeasonRecord(6, 22, 257));
 		HistoryData.addSeason(season2006);
 
-		Season season2005 = new Season(2005, messages.season2005Desc(), 727, 602, "micha (19)", true);
+		Season season2005 = new Season(2005, 727, 602, "micha (19)", true);
 		season2005.addUser(User.HUENI, new UserSeasonRecord(4, 29.5f, 244))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 39, 292))
 				.addUser(User.STEV, new UserSeasonRecord(2, 45.5f, 280))
@@ -89,7 +85,7 @@ public class HistoryData {
 				.addUser(User.MARCEL, new UserSeasonRecord(6, 23, 236));
 		HistoryData.addSeason(season2005);
 
-		Season season2004 = new Season(2004, messages.season2004Desc(), 925, 655, "nico (17)", true);
+		Season season2004 = new Season(2004, 925, 655, "nico (17)", true);
 		season2004.addUser(User.HUENI, new UserSeasonRecord(4, 9, 250))
 				.addUser(User.MICHA, new UserSeasonRecord(1, 12, 273))
 				.addUser(User.STEV, new UserSeasonRecord(2, 10.5f, 278))
@@ -98,7 +94,7 @@ public class HistoryData {
 				.addUser(User.TOBI, new UserSeasonRecord(5, 5, 185));
 		HistoryData.addSeason(season2004);
 
-		Season season2003 = new Season(2003, messages.season2003Desc(), 716, 617, "stev (17)", true);
+		Season season2003 = new Season(2003, 716, 617, "stev (17)", true);
 		season2003.addUser(User.HUENI, new UserSeasonRecord(2, 10, 232))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 9.5f, 250))
 				.addUser(User.STEV, new UserSeasonRecord(1, 14.5f, 262))
@@ -107,7 +103,7 @@ public class HistoryData {
 				.addUser(User.TOBI, new UserSeasonRecord(5, 7, 208));
 		HistoryData.addSeason(season2003);
 
-		Season season2002 = new Season(2002, messages.season2002Desc(), 1027, 876, "nico (17)", false);
+		Season season2002 = new Season(2002, 1027, 876, "nico (17)", false);
 		season2002.addUser(User.HUENI, new UserSeasonRecord(4, 7, 246))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 11, 243))
 				.addUser(User.STEV, new UserSeasonRecord(5, 6.5f, 214))
@@ -116,7 +112,7 @@ public class HistoryData {
 				.addUser(User.TOBI, new UserSeasonRecord(2, 11, 244));
 		HistoryData.addSeason(season2002);
 
-		Season season2001 = new Season(2001, messages.season2001Desc(), 636, 429, "micha, nico (19)", false);
+		Season season2001 = new Season(2001, 636, 429, "micha, nico (19)", false);
 		season2001.addUser(User.HUENI, new UserSeasonRecord(3, 9, 226))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 10, 237))
 				.addUser(User.STEV, new UserSeasonRecord(4, 8, 262))
@@ -124,13 +120,13 @@ public class HistoryData {
 				.addUser(User.MARKUS, new UserSeasonRecord(5, 4, 177));
 		HistoryData.addSeason(season2001);
 
-		Season season2000 = new Season(2000, messages.season2000Desc(), 636, 429, "hüni (18)", false);
+		Season season2000 = new Season(2000, 636, 429, "hüni (18)", false);
 		season2000.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 12, 177))
 				.addUser(User.STEV, new UserSeasonRecord(1, 12, 181));
 		HistoryData.addSeason(season2000);
 
-		Season season1999 = new Season(1999, messages.season1999Desc(), 1062, 633, "", false);
+		Season season1999 = new Season(1999, 1062, 633, "", false);
 		season1999.addUser(User.HUENI, new UserSeasonRecord(1, 8, 97))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 7, 101))
 				.addUser(User.STEV, new UserSeasonRecord(3, 3, 58));

@@ -17,8 +17,6 @@ public class Season {
 
 	private List<User> winners = new ArrayList<>();
 
-	private String description;
-
 	private int imageHeight;
 
 	private int imageWidth;
@@ -32,10 +30,9 @@ public class Season {
 		this.year = year;
 	}
 
-	public Season(int year, String description, int imageHeight, int imageWidth, String maxPoints,
+	public Season(int year, int imageHeight, int imageWidth, String maxPoints,
 			boolean hasLiveSystem) {
 		this.year = year;
-		this.description = description;
 		this.imageHeight = imageHeight;
 		this.imageWidth = imageWidth;
 		this.maxPoints = maxPoints;
@@ -73,10 +70,6 @@ public class Season {
 
 	public List<User> getWinners() {
 		return winners;
-	}
-
-	public String getDescription() {
-		return description;
 	}
 
 	public int getImageHeight() {
