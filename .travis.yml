@@ -20,3 +20,4 @@ cache:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - git commit -a -m "Committed by Travis-CI build number: $TRAVIS_JOB_ID"
