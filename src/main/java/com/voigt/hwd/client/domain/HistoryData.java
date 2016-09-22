@@ -266,7 +266,7 @@ public class HistoryData {
 			for (Season season : seasons) {
 				Set<User> users = season.getUsers().keySet();
 
-				int place = 0;
+				int place = -1;
 				if (users.contains(user)) {
 					UserSeasonRecord userSeasonRecord = season.getUsers().get(user);
 					place = userSeasonRecord.getPlace();

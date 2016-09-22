@@ -239,9 +239,8 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		LineChart lineChart = GCharts.newLineChart(getSelectedPlots());
 		lineChart.setSize(CHART_WIDTH, CHART_HEIGHT);
 
-		// lineChart.addHorizontalRangeMarker(33.3, 66.6, LIGHTBLUE);
 		int seasons = HistoryData.getEndYear() - HistoryData.getStartYear();
-		lineChart.setGrid(100d / seasons, 100d / User.values().length + 1, 3, 3);
+		lineChart.setGrid(100 / seasons, 100 / (User.values().length - 1), 3, 3);
 
 		List<String> xLabels = new ArrayList<>();
 		for (int i = HistoryData.getStartYear(); i <= HistoryData.getEndYear(); i++) {
@@ -279,9 +278,12 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 
 	private static List<Integer> getLineDataAsList(List<Integer> integers) {
 		List<Integer> list = new ArrayList<>();
-		for (Integer i : integers) {
-			i = Integer.valueOf(110 - (i.intValue() * 10));
-			list.add(i);
+		for (Integer place : integers) {
+			int cntUser = User.values().length;
+			double stepSize = 100 / (cntUser - 1);
+			int steps = cntUser - place.intValue();
+			Double percentValue = Double.valueOf(steps * stepSize);
+			list.add(Integer.valueOf(percentValue.intValue()));
 		}
 		return list;
 	}
