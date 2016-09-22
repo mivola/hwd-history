@@ -90,8 +90,8 @@ public class HistoryDataTest {
 		assertEquals(Integer.valueOf(3), standingsDataHueni.get(2));
 
 		List<Integer> standingsDataNico = HistoryData.getStandingsData(User.NICO);
-		assertEquals(Integer.valueOf(0), standingsDataNico.get(0));
-		assertEquals(Integer.valueOf(0), standingsDataNico.get(1));
+		assertEquals(Integer.valueOf(-1), standingsDataNico.get(0));
+		assertEquals(Integer.valueOf(-1), standingsDataNico.get(1));
 		assertEquals(Integer.valueOf(1), standingsDataNico.get(2));
 
 	}
