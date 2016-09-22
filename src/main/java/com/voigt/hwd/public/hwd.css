@@ -1048,3 +1048,9 @@ html>body .gwt-DecoratedTabBar .gwt-TabBarItem-selected .tabTopRight {
 .svenCheckboxTextbox {
   color: #FF00FF;
 }
+.chapperCheckboxTextbox {
+  color: #da4f49;
+}
+.schroeCheckboxTextbox {
+  color: #c4e3f3;
+}

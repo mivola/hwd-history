@@ -55,7 +55,7 @@ public class HistoryAllTimeTable extends AbstractBasePanel {
 
 		final ListGrid listGrid = new ListGrid();
 		listGrid.setWidth100();
-		listGrid.setHeight(280);
+		listGrid.setHeight(300);
 		listGrid.setDataSource(dataSource);
 		listGrid.setAutoFetchData(Boolean.TRUE);
 

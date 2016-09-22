@@ -120,7 +120,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	private CheckboxItem createCheckbox(User user, ChangedHandler changedHandler) {
 		CheckboxItem checkbox = new CheckboxItem(user.getName());
 		checkbox.setDefaultValue(Boolean.TRUE);
-		checkbox.setTextBoxStyle(user.getName() + "CheckboxTextbox hwdCheckboxTextbox");
+		checkbox.setTextBoxStyle(user.name().toLowerCase() + "CheckboxTextbox hwdCheckboxTextbox");
 		checkbox.addChangedHandler(changedHandler);
 		return checkbox;
 	}
@@ -134,27 +134,23 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 	private static Shape getShape(User user) {
 		switch (user) {
 		case HUENI:
+		case TOBI:
+		case CHAPPER:
 			return Shape.SQUARE;
 		case MICHA:
-			return Shape.CIRCLE;
-		case STEV:
-			return Shape.CROSS;
-		case NICO:
-			return Shape.DIAMOND;
 		case MARKUS:
-			return Shape.CIRCLE;
-		case TOBI:
-			return Shape.SQUARE;
-		case MARCEL:
-			return Shape.X;
 		case JAN:
 			return Shape.CIRCLE;
-		case PATZI:
-			return Shape.CIRCLE;
+		case STEV:
 		case ROSSI:
+		case SCHROE:
 			return Shape.CROSS;
+		case NICO:
 		case SVEN:
 			return Shape.DIAMOND;
+		case PATZI:
+		case MARCEL:
+			return Shape.X;
 		default:
 			return Shape.CROSS;
 		}
@@ -186,6 +182,10 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 			return Color.newColor("8FBC8F");
 		case SVEN:
 			return Color.newColor("FF00FF");
+		case CHAPPER:
+			return Color.newColor("da4f49");
+		case SCHROE:
+			return Color.newColor("c4e3f3");
 		default:
 			return Color.POWDERBLUE;
 		}

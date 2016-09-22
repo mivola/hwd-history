@@ -18,7 +18,9 @@ public enum User {
 	JAN(8, "janosch","01.08.2006"), 
 	PATZI(9, "patzi","01.08.2006"), 
 	ROSSI(10, "rossi","20.07.2007"), 
-	SVEN(11, "sven","20.07.2007");
+	SVEN(11, "sven","20.07.2007"),
+	CHAPPER(12, "chapper","18.08.2010"),
+	SCHROE(13, "schroe89","18.07.2014");
 	// @formatter:on
 
 	private int id;

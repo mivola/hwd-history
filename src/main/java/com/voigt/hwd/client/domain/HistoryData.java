@@ -20,6 +20,84 @@ public class HistoryData {
 	private static Map<User, List<Integer>> standingsData = new HashMap<>();
 
 	static {
+		Season season2015 = new Season(2015, 630, 619, "nico (18)", true);
+		season2015.addUser(User.HUENI, new UserSeasonRecord(2, 104, 297))
+				.addUser(User.NICO, new UserSeasonRecord(1, 118, 327))
+				.addUser(User.TOBI, new UserSeasonRecord(4, 91.5f, 265))
+				.addUser(User.JAN, new UserSeasonRecord(3, 95.5f, 269))
+				.addUser(User.SVEN, new UserSeasonRecord(5, 91, 280))
+				.addUser(User.SCHROE, new UserSeasonRecord(6, 85.5f, 269));
+		HistoryData.addSeason(season2015);
+
+		Season season2014 = new Season(2014, 689, 620, "tobi (19)", true);
+		season2014.addUser(User.HUENI, new UserSeasonRecord(3, 102, 322))
+				.addUser(User.MICHA, new UserSeasonRecord(5, 67.5f, 258))
+				.addUser(User.NICO, new UserSeasonRecord(1, 106, 331))
+				.addUser(User.TOBI, new UserSeasonRecord(8, 44.5f, 202))
+				.addUser(User.JAN, new UserSeasonRecord(2, 103, 324))
+				.addUser(User.ROSSI, new UserSeasonRecord(4, 72.5f, 273))
+				.addUser(User.SVEN, new UserSeasonRecord(7, 54.5f, 240))
+				.addUser(User.SCHROE, new UserSeasonRecord(6, 62.5f, 237));
+		HistoryData.addSeason(season2014);
+
+		Season season2013 = new Season(2013, 515, 608, "hüni, nico, janosch (18)", true);
+		season2013.addUser(User.HUENI, new UserSeasonRecord(2, 82, 327))
+				.addUser(User.MICHA, new UserSeasonRecord(5, 65.5f, 281))
+				.addUser(User.NICO, new UserSeasonRecord(1, 84, 307))
+				.addUser(User.TOBI, new UserSeasonRecord(6, 60.5f, 259))
+				.addUser(User.MARCEL, new UserSeasonRecord(10, 45, 209))
+				.addUser(User.JAN, new UserSeasonRecord(3, 67, 299))
+				.addUser(User.PATZI, new UserSeasonRecord(8, 58, 271))
+				.addUser(User.ROSSI, new UserSeasonRecord(4, 66.5f, 287))
+				.addUser(User.SVEN, new UserSeasonRecord(7, 58, 271))
+				.addUser(User.CHAPPER, new UserSeasonRecord(9, 52, 233));
+		HistoryData.addSeason(season2013);
+
+		Season season2012 = new Season(2012, 577, 620, "hüni, stev (22)", true);
+		season2012.addUser(User.HUENI, new UserSeasonRecord(5, 61.5f, 279))
+				.addUser(User.MICHA, new UserSeasonRecord(3, 72.5f, 293))
+				.addUser(User.STEV, new UserSeasonRecord(7, 51, 269))
+				.addUser(User.NICO, new UserSeasonRecord(1, 101, 340))
+				.addUser(User.MARKUS, new UserSeasonRecord(11, 30.5f, 159))
+				.addUser(User.TOBI, new UserSeasonRecord(12, 10.5f, 77))
+				.addUser(User.MARCEL, new UserSeasonRecord(8, 48.5f, 276))
+				.addUser(User.JAN, new UserSeasonRecord(2, 73.5f, 303))
+				.addUser(User.PATZI, new UserSeasonRecord(10, 37, 246))
+				.addUser(User.ROSSI, new UserSeasonRecord(4, 72.5f, 295))
+				.addUser(User.SVEN, new UserSeasonRecord(9, 39.5f, 249))
+				.addUser(User.CHAPPER, new UserSeasonRecord(6, 56, 230));
+		HistoryData.addSeason(season2012);
+
+		Season season2011 = new Season(2011, 576, 605, "nico (21)", true);
+		season2011.addUser(User.HUENI, new UserSeasonRecord(6, 55, 290))
+				.addUser(User.MICHA, new UserSeasonRecord(4, 61, 286))
+				.addUser(User.STEV, new UserSeasonRecord(1, 76.5f, 317))
+				.addUser(User.NICO, new UserSeasonRecord(2, 75.5f, 309))
+				.addUser(User.MARKUS, new UserSeasonRecord(12, 29, 206))
+				.addUser(User.TOBI, new UserSeasonRecord(10, 31, 150))
+				.addUser(User.MARCEL, new UserSeasonRecord(11, 29.5f, 217))
+				.addUser(User.JAN, new UserSeasonRecord(5, 60, 262))
+				.addUser(User.PATZI, new UserSeasonRecord(7, 55, 248))
+				.addUser(User.ROSSI, new UserSeasonRecord(9, 36.5f, 256))
+				.addUser(User.SVEN, new UserSeasonRecord(3, 64, 300))
+				.addUser(User.CHAPPER, new UserSeasonRecord(8, 42.5f, 256));
+		HistoryData.addSeason(season2011);
+
+		Season season2010 = new Season(2010, 777, 609, "hüni, stev, nico, patzi, chapper (18)", true);
+		season2010.addUser(User.HUENI, new UserSeasonRecord(2, 87, 288))
+				.addUser(User.MICHA, new UserSeasonRecord(9, 41, 241))
+				.addUser(User.STEV, new UserSeasonRecord(5, 63, 263))
+				.addUser(User.NICO, new UserSeasonRecord(4, 64, 266))
+				.addUser(User.MARKUS, new UserSeasonRecord(11, 32.5f, 186))
+				.addUser(User.TOBI, new UserSeasonRecord(12, 28.5f, 109))
+				.addUser(User.MARCEL, new UserSeasonRecord(10, 35.5f, 210))
+				.addUser(User.JAN, new UserSeasonRecord(1, 87, 282))
+				.addUser(User.PATZI, new UserSeasonRecord(3, 64, 268))
+				.addUser(User.ROSSI, new UserSeasonRecord(7, 48, 250))
+				.addUser(User.SVEN, new UserSeasonRecord(6, 49.5f, 256))
+				.addUser(User.CHAPPER, new UserSeasonRecord(8, 45.5f, 185));
+		HistoryData.addSeason(season2010);
+
 		Season season2009 = new Season(2009, 717, 588, "hüni (21)", true);
 		season2009.addUser(User.HUENI, new UserSeasonRecord(1, 80.5f, 300))
 				.addUser(User.MICHA, new UserSeasonRecord(4, 65.5f, 296))
