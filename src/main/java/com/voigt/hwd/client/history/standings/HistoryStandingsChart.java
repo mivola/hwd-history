@@ -127,7 +127,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 
 	private static Data getData(User user) {
 		List<Integer> integers = HistoryData.getStandingsData(user);
-		List<Integer> list = getLineDataAsList(integers);
+		List<Integer> list = ChartPointsUtil.getLineDataAsList(integers);
 		return Data.newData(list);
 	}
 
@@ -240,7 +240,7 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		lineChart.setSize(CHART_WIDTH, CHART_HEIGHT);
 
 		int seasons = HistoryData.getEndYear() - HistoryData.getStartYear();
-		lineChart.setGrid(100 / seasons, 100 / (User.values().length - 1), 3, 3);
+		lineChart.setGrid(100d / seasons, 100d / (User.values().length - 1), 3, 3);
 
 		List<String> xLabels = new ArrayList<>();
 		for (int i = HistoryData.getStartYear(); i <= HistoryData.getEndYear(); i++) {
@@ -274,18 +274,6 @@ public class HistoryStandingsChart extends AbstractBasePanel {
 		}
 		return plots;
 
-	}
-
-	private static List<Integer> getLineDataAsList(List<Integer> integers) {
-		List<Integer> list = new ArrayList<>();
-		for (Integer place : integers) {
-			int cntUser = User.values().length;
-			double stepSize = 100 / (cntUser - 1);
-			int steps = cntUser - place.intValue();
-			Double percentValue = Double.valueOf(steps * stepSize);
-			list.add(Integer.valueOf(percentValue.intValue()));
-		}
-		return list;
 	}
 
 	@SuppressWarnings("unused")
