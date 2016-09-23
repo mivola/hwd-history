@@ -1,3 +1,5 @@
+import java.util.Date;
+
 buildscript {
 	repositories {
 		jcenter()
@@ -53,6 +55,16 @@ jacocoTestReport {
 		xml.enabled = true
 		html.enabled = true
 	}
+}
+
+task increaseBuildNumber << {
+	File propsFile = new File('src/main/resources/com/voigt/hwd/client/Version.properties')
+	Properties props = new Properties()
+	props.load(propsFile.newDataInputStream())
+	Integer nextBuildNumber = ( ((props.getProperty('build.version.micro')) as BigDecimal) + 1 )
+	props.setProperty('build.version.micro', nextBuildNumber.toString())
+	props.setProperty('build.date', new Date().getTime().toString())
+	props.store(propsFile.newWriter(), null)
 }
 
 check.dependsOn jacocoTestReport

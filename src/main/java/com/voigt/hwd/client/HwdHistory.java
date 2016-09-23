@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -84,17 +85,13 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 			}
 		});
 
-		HwdMessages messages = HwdMessagesFactory.getInstance();
+		String formattedDate = getBuildDate();
+		Label buildDateLabel = new Label("erstellt: " + formattedDate);
+		buildDateLabel.setHeight(20);
+		buildDateLabel.setWrap(false);
 
-		// TODO: change the value of this key in the properties file
-		// during the build process to the compile time
-		String builtDate = messages.builtDate();
-
-		Label builtDateLabel = new Label("erstellt: " + builtDate);
-		builtDateLabel.setHeight(20);
-		builtDateLabel.setWrap(false);
-
-		Label versionLabel = new Label("v" + messages.builtVersion());
+		String buildVersion = getBuildVersion();
+		Label versionLabel = new Label(buildVersion);
 		versionLabel.setWidth100();
 		versionLabel.setHeight(20);
 		versionLabel.setAlign(Alignment.RIGHT);
@@ -111,7 +108,7 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 
 		HLayout versionLayout = new HLayout();
 		versionLayout.setWidth100();
-		versionLayout.addMember(builtDateLabel);
+		versionLayout.addMember(buildDateLabel);
 		versionLayout.addMember(versionLabel);
 
 		sideNavLayout.addMember(versionLayout);
@@ -189,6 +186,7 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 		window.setWidth(500);
 		window.setHeight(375);
 
+		HwdMessages messages = HwdMessagesFactory.getInstance();
 		Label titleLabel = new Label(messages.welcomeNewsTitle());
 		titleLabel.setWidth100();
 		titleLabel.setMargin(15);
@@ -231,6 +229,23 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 		RootPanel.get("loadingMsg").getElement().setInnerHTML("");
 	}
 
+	private String getBuildDate() {
+		Version version = GWT.create(Version.class);
+		String buildDateTimestamp = version.buildDate();
+		Date buildDate = new Date(Long.valueOf(buildDateTimestamp));
+		String formattedDate = DateTimeFormat.getFormat(SHORT_DATE_FORMAT).format(buildDate);
+		return formattedDate;
+	}
+
+	private String getBuildVersion() {
+		Version version = GWT.create(Version.class);
+		String major = version.buildVersionMajor();
+		String minor = version.buildVersionMinor();
+		String micro = version.buildVersionMicro();
+		String buildVersion = "v" + major + "." + minor + "." + micro;
+		return buildVersion;
+	}
+
 	private void setDateFormats() {
 
 		DateUtil.setDateParser(new DateParser() {
@@ -266,8 +281,8 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 	}
 
 	private Menu createContextMenu() {
-		Menu menu = new Menu();
-		menu.setWidth(140);
+		Menu contextMenu = new Menu();
+		contextMenu.setWidth(140);
 
 		MenuItemIfFunction enableCondition = new MenuItemIfFunction() {
 			public boolean execute(Canvas target, Menu menu, MenuItem item) {
@@ -324,8 +339,8 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 			}
 		});
 
-		menu.setItems(closeItem, closeAllButCurrent, closeAll);
-		return menu;
+		contextMenu.setItems(closeItem, closeAllButCurrent, closeAll);
+		return contextMenu;
 	}
 
 	private void showSample(Record record) {
