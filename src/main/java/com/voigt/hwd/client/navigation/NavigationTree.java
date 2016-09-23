@@ -31,7 +31,7 @@ public class NavigationTree extends TreeGrid {
 	public NavigationTree() {
 		setWidth100();
 		setHeight100();
-		// setShowHeader(false);
+		setShowHeader(false);
 		setCustomIconProperty("icon");
 		setAnimateFolderTime(100);
 		setAnimateFolders(true);
@@ -42,16 +42,11 @@ public class NavigationTree extends TreeGrid {
 		setShowAllRecords(true);
 		setLoadDataOnDemand(false);
 		setCanSort(false);
-		// setShowFilterEditor(true);
-
-		// also works
-		// setDataSource(new HwdDS("side"));
-		// setAutoFetchData(true);
 
 		TreeGridField field = new TreeGridField();
 		field.setCanFilter(true);
 		field.setName("name");
-		field.setTitle("<b>HWD NG</b>");
+		field.setShowTitle(false);
 		setFields(field);
 
 		Tree tree = new Tree();
@@ -68,7 +63,7 @@ public class NavigationTree extends TreeGrid {
 		setData(tree);
 	}
 
-	public ExplorerTreeNode[] getShowcaseData() {
+	public ExplorerTreeNode[] getNaviationData() {
 		return navigationData;
 	}
 }

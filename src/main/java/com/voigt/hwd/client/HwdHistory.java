@@ -4,10 +4,11 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.HistoryListener;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.smartgwt.client.core.KeyIdentifier;
 import com.smartgwt.client.data.Record;
@@ -27,8 +28,6 @@ import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.SelectItem;
 import com.smartgwt.client.widgets.form.fields.events.ChangeEvent;
 import com.smartgwt.client.widgets.form.fields.events.ChangeHandler;
-import com.smartgwt.client.widgets.grid.events.RecordClickEvent;
-import com.smartgwt.client.widgets.grid.events.RecordClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.LayoutSpacer;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -47,10 +46,9 @@ import com.voigt.hwd.client.i18n.HwdMessages;
 import com.voigt.hwd.client.i18n.HwdMessagesFactory;
 import com.voigt.hwd.client.navigation.CommandTreeNode;
 import com.voigt.hwd.client.navigation.ExplorerTreeNode;
-import com.voigt.hwd.client.navigation.NavigationSectionStack;
 import com.voigt.hwd.client.navigation.NavigationTree;
 
-public class HwdHistory implements EntryPoint, HistoryListener {
+public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 
 	private static final String NORMAL_DATE_FORMAT = "dd.MM.yyyy HH:mm:ss";
 	private static final String SHORT_DATE_FORMAT = "dd.MM.yyyy";
@@ -59,25 +57,9 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 
 	public void onModuleLoad() {
 
-		final String initToken = History.getToken();
+		VLayout main = new VLayout();
 
-		// setup overall layout
-		// viewport
-		VLayout main = new VLayout() {
-			@Override
-			protected void onInit() {
-				super.onInit();
-				if (initToken.length() != 0) {
-					onHistoryChanged(initToken);
-				}
-			}
-		};
-
-		// set the date format
 		this.setDateFormats();
-
-		// test the RPC Services
-		// this.testServices();
 
 		main.setWidth100();
 		main.setHeight100();
@@ -105,8 +87,7 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		HwdMessages messages = HwdMessagesFactory.getInstance();
 
 		// TODO: change the value of this key in the properties file
-		// during the
-		// build process to the compile time
+		// during the build process to the compile time
 		String builtDate = messages.builtDate();
 
 		Label builtDateLabel = new Label("erstellt: " + builtDate);
@@ -122,26 +103,11 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		treeTab.setPane(navigationTree);
 		treeTab.setTitle("1");
 
-		RecordClickHandler recordClickHandler = new RecordClickHandler() {
-			public void onRecordClick(RecordClickEvent event) {
-				Record record = event.getRecord();
-				showSample(record);
-			}
-		};
-
-		final NavigationSectionStack accordeonNav = new NavigationSectionStack(recordClickHandler);
-
-		Tab accordeonTab = new Tab();
-		accordeonTab.setPane(accordeonNav);
-		accordeonTab.setTitle("2");
-
-		// TODO: set Icons into the tabs instead of the title
 		TabSet navTabSet = new TabSet();
 		navTabSet.setHeight100();
 		navTabSet.addTab(treeTab);
-		navTabSet.addTab(accordeonTab);
 
-		sideNavLayout.addMember(navTabSet);
+		sideNavLayout.addMember(navigationTree);
 
 		HLayout versionLayout = new HLayout();
 		versionLayout.setWidth100();
@@ -155,8 +121,7 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		mainTabSet = new TabSet();
 
 		// default is 22. required to increase to that select tab
-		// control
-		// displays well
+		// control displays well
 		mainTabSet.setTabBarThickness(24);
 		mainTabSet.setWidth100();
 		mainTabSet.setHeight100();
@@ -197,9 +162,6 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		form.setFields(selectItem);
 
 		mainTabSet.setTabBarControls(TabBarControls.TAB_SCROLLER, TabBarControls.TAB_PICKER, layoutSpacer, form);
-		// mainTabSet.setTabBarControls(TabBarControls.TAB_SCROLLER,
-		// TabBarControls.TAB_PICKER, layoutSpacer, form,
-		// imgButton);
 
 		final Menu contextMenu = createContextMenu();
 		mainTabSet.addShowContextMenuHandler(new ShowContextMenuHandler() {
@@ -213,10 +175,10 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		});
 
 		Tab tab = new Tab();
-		tab.setTitle("HWD NG&nbsp;&nbsp;");
+		tab.setTitle("HWD History");
 		tab.setIcon("pieces/16/cube_green.png");
 
-		final String title = "HWD NG - Latest News";
+		final String title = "HWD History";
 		Window window = new Window();
 		window.setTitle(title);
 		window.setHeaderControls(HeaderControls.HEADER_ICON, HeaderControls.HEADER_LABEL);
@@ -260,8 +222,7 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		main.addMember(hLayout);
 		main.draw();
 
-		// Add history listener
-		History.addHistoryListener(this);
+		History.addValueChangeHandler(this);
 
 		RootPanel.get("loadingMsg").getElement().setInnerHTML("");
 	}
@@ -408,11 +369,20 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		}
 	}
 
-	public void onHistoryChanged(String historyToken) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.google.gwt.event.logical.shared.ValueChangeHandler#onValueChange(com.
+	 * google.gwt.event.logical.shared.ValueChangeEvent)
+	 */
+	public void onValueChange(ValueChangeEvent<String> event) {
+		// public void onHistoryChanged(String historyToken) {
+		Object historyToken = event.getValue();
 		if (historyToken == null || historyToken.equals("")) {
 			mainTabSet.selectTab(0);
 		} else {
-			ExplorerTreeNode[] showcaseData = navigationTree.getShowcaseData();
+			ExplorerTreeNode[] showcaseData = navigationTree.getNaviationData();
 			for (ExplorerTreeNode explorerTreeNode : showcaseData) {
 				if (explorerTreeNode.getNodeID().equals(historyToken)) {
 					showSample(explorerTreeNode);
@@ -426,9 +396,10 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 						tree.openFolder(categoryNode);
 						categoryNode = tree.getParent(categoryNode);
 					}
+				} else {
+					navigationTree.selectRecord(explorerTreeNode, false);
 				}
 			}
 		}
 	}
-
 }
