@@ -7,11 +7,19 @@
 	<inherits name="com.google.gwt.i18n.I18N"/>
 	
     <inherits name="com.smartgwt.SmartGwtNoScript"/>
-    <inherits name="com.smartclient.theme.enterprise.EnterpriseResources"/>
+
     <inherits name="com.smartclient.theme.blackops.BlackOpsResources"/>
-    <inherits name="com.smartclient.theme.silverwave.SilverWaveResources"/>
-    <inherits name="com.smartclient.theme.treefrog.TreeFrogResources"/>
+    <inherits name="com.smartclient.theme.blackops.BlackOps"/>
     <inherits name="com.smartclient.theme.fleet.FleetResources"/>
+    <inherits name="com.smartclient.theme.fleet.Fleet"/>
+    <inherits name="com.smartclient.theme.mobile.MobileResources" />
+	<inherits name="com.smartclient.theme.mobile.Mobile" />
+    <inherits name="com.smartclient.theme.silverwave.SilverWaveResources"/>
+    <inherits name="com.smartclient.theme.silverwave.SilverWave"/>
+    <inherits name="com.smartclient.theme.simplicity.SimplicityResources" />
+	<inherits name="com.smartclient.theme.simplicity.Simplicity" />
+    <inherits name="com.smartclient.theme.treefrog.TreeFrogResources"/>
+    <inherits name="com.smartclient.theme.treefrog.TreeFrog"/>
 
     <inherits name="com.googlecode.charts4j"/>
 

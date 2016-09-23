@@ -134,10 +134,14 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 		selectItem.setWidth(130);
 		LinkedHashMap<String, String> valueMap = new LinkedHashMap<>();
 		valueMap.put("Enterprise", "Enterprise");
+		valueMap.put("EnterpriseBlue", "Enterprise Blue");
 		valueMap.put("SilverWave", "Silver Wave");
 		valueMap.put("BlackOps", "Black Ops");
 		valueMap.put("TreeFrog", "Tree Frog");
 		valueMap.put("fleet", "Fleet");
+		valueMap.put("Mobile", "Mobile");
+		valueMap.put("Simplicity", "Simplicity");
+		valueMap.put("Graphite", "Graphite");
 
 		selectItem.setValueMap(valueMap);
 
