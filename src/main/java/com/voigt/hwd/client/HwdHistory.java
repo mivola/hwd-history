@@ -167,7 +167,7 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 
 		SelectItem selectItem = new SelectItem();
 		selectItem.setWidth(130);
-		LinkedHashMap<String, String> valueMap = new LinkedHashMap<String, String>();
+		LinkedHashMap<String, String> valueMap = new LinkedHashMap<>();
 		valueMap.put("Enterprise", "Enterprise");
 		valueMap.put("SilverWave", "Silver Wave");
 		valueMap.put("BlackOps", "Black Ops");
@@ -235,64 +235,6 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		window.addItem(titleLabel);
 		window.addItem(newsLabel);
 
-		// CHRONOSCOPE
-		// double GOLDEN_RATIO = 1.618;
-		// int chartWidth = 600, chartHeight = (int) (chartWidth /
-		// GOLDEN_RATIO);
-		// Chronoscope.setFontBookRendering(true);
-		// Basic basicDatasetRequest = new DatasetRequest.Basic();
-		// basicDatasetRequest.setAxisId("blh");
-		// basicDatasetRequest.setDomain(new double[] { 1d, 2d });
-		// basicDatasetRequest.setRangeLabel("asjdfkl");
-		//
-		// // Dataset<MyTuple2D> dataset = new
-		// // ChronoscopeDatasetFactory().create(basicDatasetRequest);
-		// // Dataset<MyTuple2D>[] datasetArray = new
-		// Dataset<MyTuple2D>[2];
-		// XYDataSource dataSource =
-		// XYDataSource.getInstance("datset.js");
-		//
-		// // dataset[0] =
-		// Chronoscope.createXYDataset(getJson("dataset"));
-		//
-		// VerticalPanel vp = new VerticalPanel();
-		// vp.add(new Label(dataset.getRangeLabel()));
-		// ChartPanel chartPanel =
-		// Chronoscope.createTimeseriesChart(dataset,
-		// chartWidth, chartHeight);
-		// vp.add(chartPanel);
-
-		// Float[] data = new Float[] { new Float(0f), new Float(45f),
-		// new
-		// Float(35f), new Float(75f), new Float(100f) };
-		// // Defining Line
-		// Line line = new Line(new Data(data));
-		// line.setLineStyle(new LineStyle(3, 1, 0));
-		// line.setColor(Color.RED);
-		// // Defining chart.
-		// LineChart chart = new LineChart(new Line[] { line });
-		// chart.setSize(400, 300);
-		// chart.setTitle("Web Traffic|(in billions of hits)",
-		// Color.RED, 14);
-		// chart.addXAxisInfo(new AxisInfo(new String[] { "Nov", "Dec",
-		// "Jan",
-		// "Feb", "Mar" }));
-		// chart.addXAxisInfo(new AxisInfo(new String[] { "2007",
-		// "2007",
-		// "2008", "2008", "2008" }));
-		// chart.addYAxisInfo(new AxisInfo(new String[] { "", "25",
-		// "50", "75",
-		// "100" }));
-		// // Defining background and chart fills.
-		// chart.setBackgroundFill(new SolidFill(Color.LIGHTGREY));
-		// LinearGradientFill fill = new LinearGradientFill(0,
-		// Color.LIGHTBLUE,
-		// 1);
-		// fill.addColorAndOffset(Color.WHITE, 0);
-		// chart.setAreaFill(fill);
-		// // ChartWidget widget = new ChartWidget( chart );
-		// String url = chart.createURLString();
-
 		window.setKeepInParentRect(true);
 		window.setTop(30);
 		window.setLeft(30);
@@ -357,10 +299,6 @@ public class HwdHistory implements EntryPoint, HistoryListener {
 		});
 
 	}
-
-
-	/**
-	private static native JavaScriptObject getJson(String varName) /*-{ return $wnd[varName]; }-*/;
 
 	private Menu createContextMenu() {
 		Menu menu = new Menu();

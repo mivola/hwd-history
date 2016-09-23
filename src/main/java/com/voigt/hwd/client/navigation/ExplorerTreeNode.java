@@ -56,10 +56,12 @@ public class ExplorerTreeNode extends TreeNode {
 		return getAttributeAsString("name");
 	}
 
+	@Override
 	public void setIcon(String icon) {
 		setAttribute("icon", icon);
 	}
 
+	@Override
 	public String getIcon() {
 		return getAttributeAsString("icon");
 	}

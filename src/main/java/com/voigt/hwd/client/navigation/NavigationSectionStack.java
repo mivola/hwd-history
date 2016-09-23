@@ -22,10 +22,10 @@ public class NavigationSectionStack extends SectionStack {
 	private final ExplorerTreeNode[] navigationData = NavigationData.getData(idSuffix);
 
 	/* nodeId, section (without the content) */
-	private final Map<String, SectionStackSection> sections = new HashMap<String, SectionStackSection>();
+	private final Map<String, SectionStackSection> sections = new HashMap<>();
 
 	/* parentNodeId, list of nodes */
-	private final Map<String, List<ExplorerTreeNode>> sectionTreeNodes = new HashMap<String, List<ExplorerTreeNode>>();
+	private final Map<String, List<ExplorerTreeNode>> sectionTreeNodes = new HashMap<>();
 
 	public NavigationSectionStack(RecordClickHandler recordClickHandler) {
 
@@ -48,7 +48,7 @@ public class NavigationSectionStack extends SectionStack {
 
 				List<ExplorerTreeNode> sectionNodes = sectionTreeNodes.get(parentNodeID);
 				if (sectionNodes == null) {
-					sectionNodes = new ArrayList<ExplorerTreeNode>();
+					sectionNodes = new ArrayList<>();
 				}
 
 				// add the new node to the list

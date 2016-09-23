@@ -25,8 +25,7 @@ public class Season {
 
 	private String maxPoints;
 
-	@Deprecated
-	public Season(int year) {
+	Season(int year) {
 		this.year = year;
 	}
 
