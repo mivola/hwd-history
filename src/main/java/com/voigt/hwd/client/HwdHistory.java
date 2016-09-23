@@ -16,7 +16,7 @@ import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.HeaderControls;
 import com.smartgwt.client.types.TabBarControls;
 import com.smartgwt.client.util.DateDisplayFormatter;
-import com.smartgwt.client.util.DateInputFormatter;
+import com.smartgwt.client.util.DateParser;
 import com.smartgwt.client.util.DateUtil;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
@@ -229,7 +229,7 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 
 	private void setDateFormats() {
 
-		DateUtil.setDateInputFormatter(new DateInputFormatter() {
+		DateUtil.setDateParser(new DateParser() {
 			public Date parse(String dateString) {
 				final DateTimeFormat dateFormatter = DateTimeFormat.getFormat(SHORT_DATE_FORMAT);
 				Date date = dateFormatter.parse(dateString);
