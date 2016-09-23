@@ -32,6 +32,7 @@ public class HistoryOverviewWindow extends Window {
 
 	private void createHistoryOverview() {
 
+		this.setShowHeader(false);
 		this.setWidth100();
 		this.setMargin(10);
 		this.setMembersMargin(10);
