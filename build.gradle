@@ -10,6 +10,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
+		classpath 'org.ajoberstar:gradle-git:0.6.5'
 	}
 }
 
@@ -57,17 +58,40 @@ jacocoTestReport {
 	}
 }
 
-task increaseBuildNumber << {
+task increaseBuildNumber {
 	File propsFile = new File('src/main/resources/com/voigt/hwd/client/Version.properties')
 	Properties props = new Properties()
 	props.load(propsFile.newDataInputStream())
-	Integer nextBuildNumber = ( ((props.getProperty('build.version.micro')) as BigDecimal) + 1 )
-	props.setProperty('build.version.micro', nextBuildNumber.toString())
+	String major = props.getProperty('build.version.major')
+	String minor = props.getProperty('build.version.minor')
+	Integer micro = ( ((props.getProperty('build.version.micro')) as BigDecimal) + 1 )
+	project.version = major + "." + minor + "." + micro
+	println "new build version: " + project.version
+	props.setProperty('build.version.micro', micro.toString())
 	props.setProperty('build.date', new Date().getTime().toString())
 	props.store(propsFile.newWriter(), null)
 }
 
-check.dependsOn jacocoTestReport
+import org.ajoberstar.gradle.git.tasks.GitTag
+import org.ajoberstar.gradle.git.tasks.GitPush
+import org.ajoberstar.gradle.git.tasks.GitCommit
 
+task commitVersionFile(type: GitCommit, dependsOn: increaseBuildNumber) {
+	message = "Increase buildVersion to ${project.version.toString()}"
+	println message
+	//add 'src/main/resources/com/voigt/hwd/client/Version.properties'
+}
+task createTag(type: GitTag, dependsOn: commitVersionFile) {
+	repoPath = rootDir
+	tagName = "RELEASE-${project.version.toString()}"
+	message = "Application release ${project.version.toString()}"
+	println message
+}
+
+//task pushTag(type: GitPush, dependsOn: createTag) {
+   //namesOrSpecs = [projectGitTag]
+//}
+
+check.dependsOn jacocoTestReport
 tasks.clean.dependsOn cleanWar
 tasks.eclipse.dependsOn cleanEclipse
