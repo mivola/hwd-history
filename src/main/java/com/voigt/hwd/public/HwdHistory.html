@@ -1,9 +1,11 @@
 <html>
 <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>HWD</title>
     <!--CSS for loading message at application Startup-->
     <style type="text/css">
-        body { overflow:hidden }
+        html, body { overflow:hidden }
         #loading {
             border: 1px solid #ccc;
             position: absolute;
@@ -12,6 +14,9 @@
             padding: 2px;
             z-index: 20001;
             height: auto;
+            text-align: left;
+            margin: 0 auto;
+            width: 160px;
         }
 
         #loading a {
@@ -32,42 +37,44 @@
         }
     </style>
     <link rel="stylesheet" href="hwd.css">
+    <!-- 
     <link rel="stylesheet" href="css/CssStylesSample.css">
+     -->
 </head>
 <body>
 <iframe id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
 
 <!--add loading indicator while the app is being loaded-->
-<div id="loadingWrapper">
 <div id="loading">
     <div class="loadingIndicator">
         <!--<img src="images/pieces/48/cube_green.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;"/>SmartGWT<br/>-->
         <img src="images/loading.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;"/>HWD<br/>
         <span id="loadingMsg">Loading styles and images...</span></div>
 </div>
-</div>
-    <script>var isomorphicDir = "sc/"</script>
 
-<!-- Chronoscope -->
-<script language='javascript' src='dataset.js'>
-
-<script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading Core API...';</script>
+<!-- IMPORTANT : You must set the variable isomorphicDir to [MODULE_NAME]/sc/ so that the Smart GWT
+     resource are correctly resolved -->
+<script type="text/javascript">
+var isomorphicDir = "sc/";
+document.getElementById('loadingMsg').innerHTML = 'Loading Core API...';
+</script>
 
 <!--include the SC Core API-->
-<script src=sc/modules/ISC_Core.js?isc_version=7.0beta.js></script>
+<script type="text/javascript" src='sc/modules/ISC_Core.js?isc_version=11.0p_2016-08-08.js'></script>
 
 <!--include SmartClient -->
 <script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading UI Components...';</script>
-<script src=sc/modules/ISC_Foundation.js?isc_version=7.0beta.js></script>
-<script src=sc/modules/ISC_Containers.js?isc_version=7.0beta.js></script>
-<script src=sc/modules/ISC_Grids.js?isc_version=7.0beta.js></script>
-<script src=sc/modules/ISC_Forms.js?isc_version=7.0beta.js></script>
-<script src=sc/modules/ISC_RichTextEditor.js?isc_version=7.0beta.js></script>
-<script src=sc/modules/ISC_Calendar.js?isc_version=7.0beta.js></script>
+<script type="text/javascript" src='sc/modules/ISC_Foundation.js?isc_version=11.0p_2016-08-08.js'></script>
+<script type="text/javascript" src='sc/modules/ISC_Containers.js?isc_version=11.0p_2016-08-08.js'></script>
+<script type="text/javascript" src='sc/modules/ISC_Grids.js?isc_version=11.0p_2016-08-08.js'></script>
+<script type="text/javascript" src='sc/modules/ISC_Forms.js?isc_version=11.0p_2016-08-08.js'></script>
+<script type="text/javascript" src='sc/modules/ISC_RichTextEditor.js?isc_version=11.0p_2016-08-08.js'></script>
 <script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading Data API...';</script>
-<script src=sc/modules/ISC_DataBinding.js?isc_version=7.0beta.js></script>
+<script type="text/javascript" src='sc/modules/ISC_DataBinding.js?isc_version=11.0p_2016-08-08.js'></script>
+<script type="text/javascript" src='sc/modules/ISC_Calendar.js?isc_version=11.0p_2016-08-08.js'></script>
+<script type="text/javascript" src='sc/modules/ISC_Drawing.js?isc_version=11.0p_2016-08-08.js'></script>
 
-<script>
+<script type="text/javascript">
 function readCookie(name) {
 	var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
@@ -80,15 +87,15 @@ function readCookie(name) {
 }
 
 // Determine what skin file to load
-var currentSkin = readCookie('skin'); 
-if (currentSkin == null) currentSkin = "SilverWave";
+var currentSkin = readCookie('skin_name_2_4');
+if (currentSkin == null) currentSkin = "Enterprise";
 </script>
 
 <!--load skin-->
 <script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading skin...';</script>
 
 <script type="text/javascript">
-document.write("<"+"script src=sc/skins/" + currentSkin + "/load_skin.js?isc_version=7.0beta.js><"+"/script>");
+document.write("<"+"script src=sc/skins/" + currentSkin + "/load_skin.js?isc_version=11.0p_2016-08-08.js><"+"/script>");
 </script>
 
 <!--include the application JS-->
