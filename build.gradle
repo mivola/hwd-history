@@ -71,19 +71,22 @@ task increaseBuildNumber {
 
 import org.ajoberstar.grgit.*;
 
-task commitVersionFile(dependsOn: increaseBuildNumber) << {
+task commitVersionFile() {
 	def grgit = Grgit.open(dir: '.')
 	grgit.add(patterns: [versionFile])
-	grgit.commit(message: 'Increase buildVersion to ' + ${project.version.toString()})
+	grgit.commit(message: "Increase buildVersion to ${project.version.toString()}")
 	println 'Committed successfully: ' + versionFile
 }
 
-task createTag(dependsOn: commitVersionFile) {
+task createTag() {
 	def grgit = Grgit.open(dir: '.')
 	grgit.tag.add {
 		name = "RELEASE-${project.version.toString()}"
 		message = "Application release ${project.version.toString()}"
 	}
+}
+
+task releaseNewVersion(dependsOn: [increaseBuildNumber, commitVersionFile, createTag]) {
 }
 
 check.dependsOn jacocoTestReport
