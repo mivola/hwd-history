@@ -55,7 +55,7 @@ jacocoTestReport {
 }
 
 ext.versionFile = 'src/main/resources/com/voigt/hwd/client/Version.properties'
-task increaseBuildNumber {
+task increaseBuildNumber << {
 	File propsFile = new File(versionFile)
 	Properties props = new Properties()
 	props.load(propsFile.newDataInputStream())
@@ -71,14 +71,14 @@ task increaseBuildNumber {
 
 import org.ajoberstar.grgit.*;
 
-task commitVersionFile() {
+task commitVersionFile() << {
 	def grgit = Grgit.open(dir: '.')
 	grgit.add(patterns: [versionFile])
 	grgit.commit(message: "Increase buildVersion to ${project.version.toString()}")
 	println 'Committed successfully: ' + versionFile
 }
 
-task createTag() {
+task createTag() << {
 	def grgit = Grgit.open(dir: '.')
 	grgit.tag.add {
 		name = "RELEASE-${project.version.toString()}"
@@ -86,8 +86,7 @@ task createTag() {
 	}
 }
 
-task releaseNewVersion(dependsOn: [clean, increaseBuildNumber, commitVersionFile, createTag, war]) {
-}
+task releaseNewVersion(dependsOn: [clean, increaseBuildNumber, commitVersionFile, createTag, war])<< {}
 
 check.dependsOn jacocoTestReport
 tasks.clean.dependsOn cleanWar
