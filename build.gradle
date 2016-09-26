@@ -86,7 +86,7 @@ task createTag() {
 	}
 }
 
-task releaseNewVersion(dependsOn: [increaseBuildNumber, commitVersionFile, createTag]) {
+task releaseNewVersion(dependsOn: [clean, increaseBuildNumber, commitVersionFile, createTag, war]) {
 }
 
 check.dependsOn jacocoTestReport
