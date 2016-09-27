@@ -19,7 +19,7 @@ import com.voigt.hwd.client.i18n.HwdMessagesFactory;
 
 public class HistoryOverview extends AbstractBasePanel {
 
-	private static final String DESCRIPTION = "<p>die einzelnen Jahre im �berblick ...</p>";
+	private static final String DESCRIPTION = "<p>die einzelnen Jahre im Überblick ...</p>";
 
 	public static class Factory implements PanelFactory {
 		private String id;
@@ -56,7 +56,6 @@ public class HistoryOverview extends AbstractBasePanel {
 		tabSet.setTabBarThickness(24);
 		tabSet.setWidth100();
 		tabSet.setHeight100();
-		tabSet.setCloseTabIcon("[SKIN]/Window/close.png");
 
 		LayoutSpacer layoutSpacer = new LayoutSpacer();
 		layoutSpacer.setWidth(5);

@@ -51,7 +51,6 @@ public class HistoryOverviewDataProvider {
 		}
 		NumberFormat format = NumberFormat.getFormat("00");
 		return "hwd" + format.format(startYear) + "_" + format.format(endYear);
-		// return "";
 	}
 
 	public HistoryOverviewData getData(int season) {

@@ -122,7 +122,6 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 		mainTabSet.setTabBarThickness(24);
 		mainTabSet.setWidth100();
 		mainTabSet.setHeight100();
-		mainTabSet.setCloseTabIcon("[SKIN]/Window/close.png");
 
 		LayoutSpacer layoutSpacer = new LayoutSpacer();
 		layoutSpacer.setWidth(5);
@@ -177,7 +176,7 @@ public class HwdHistory implements EntryPoint, ValueChangeHandler<String> {
 
 		Tab tab = new Tab();
 		tab.setTitle("HWD History");
-		tab.setIcon("pieces/16/cube_green.png");
+		// tab.setIcon("pieces/16/cube_green.png");
 
 		final String title = "HWD History";
 		Window window = new Window();

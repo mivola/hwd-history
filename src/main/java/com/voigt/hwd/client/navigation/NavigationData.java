@@ -29,10 +29,11 @@ public class NavigationData {
 					new ExplorerTreeNode("HWD History", "history", ROOT, "silk/house.png", null, true, idSuffix),
 					new ExplorerTreeNode("Jahres&uuml;berblick", "history-overview", "history",
 							"silk/calendar_view_day.png", new HistoryOverview.Factory(), true, idSuffix),
-					new ExplorerTreeNode("Ewige Tabelle", "history-alltime-table", "history", "silk/calendar_add.png",
+					new ExplorerTreeNode("Ewige Tabelle", "history-alltime-table", "history",
+							"silk/calendar.png",
 							new HistoryAllTimeTable.Factory(), true, idSuffix),
 					new ExplorerTreeNode("Platzierungen", "history-standings-chart", "history",
-							"silk/calendar_add.png", new HistoryStandingsChart.Factory(), true, idSuffix),
+							"silk/chart_bar.png", new HistoryStandingsChart.Factory(), true, idSuffix),
 
 			};
 			navigationDataMap.put(idSuffix, data);
