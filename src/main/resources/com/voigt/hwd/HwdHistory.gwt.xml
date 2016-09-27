@@ -8,6 +8,11 @@
 	
     <inherits name="com.smartgwt.SmartGwtNoScript"/>
 
+	<inherits name="com.smartclient.theme.enterpriseblue.EnterpriseBlueResources"/>
+	<inherits name="com.smartclient.theme.enterpriseblue.EnterpriseBlue"/>
+	<inherits name="com.smartclient.theme.graphite.GraphiteResources"/>
+	<inherits name="com.smartclient.theme.graphite.Graphite"/>
+
     <inherits name="com.smartclient.theme.blackops.BlackOpsResources"/>
     <inherits name="com.smartclient.theme.blackops.BlackOps"/>
     <inherits name="com.smartclient.theme.fleet.FleetResources"/>
