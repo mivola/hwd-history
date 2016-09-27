@@ -36,6 +36,18 @@ public class HwdMessagesFactory {
 			return getInstance().season2008Desc();
 		case 2009:
 			return getInstance().season2009Desc();
+		case 2010:
+			return getInstance().season2010Desc();
+		case 2011:
+			return getInstance().season2011Desc();
+		case 2012:
+			return getInstance().season2012Desc();
+		case 2013:
+			return getInstance().season2013Desc();
+		case 2014:
+			return getInstance().season2014Desc();
+		case 2015:
+			return getInstance().season2015Desc();
 		default:
 			return "";
 		}
