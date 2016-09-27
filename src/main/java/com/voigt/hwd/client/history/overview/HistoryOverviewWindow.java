@@ -154,7 +154,7 @@ public class HistoryOverviewWindow extends Window {
 
 		} else {
 
-			final String imgUrl = "hwd/history/" + data.getImageFilename();
+			final String imgUrl = "screenshots/" + data.getImageFilename();
 
 			showScreenshotButton.addClickHandler(new ClickHandler() {
 
@@ -185,7 +185,7 @@ public class HistoryOverviewWindow extends Window {
 					modalImgWindow.centerInPage();
 
 					modalImgWindow.addCloseClickHandler(new CloseClickHandler() {
-						public void onCloseClick(CloseClickEvent event) {
+						public void onCloseClick(CloseClickEvent closeClickEvent) {
 							modalImgWindow.destroy();
 						}
 					});
@@ -204,7 +204,7 @@ public class HistoryOverviewWindow extends Window {
 					vLayout.setAlign(Alignment.CENTER);
 
 					img.addClickHandler(new ClickHandler() {
-						public void onClick(ClickEvent event) {
+						public void onClick(ClickEvent clickEvent) {
 							modalImgWindow.destroy();
 						}
 					});
