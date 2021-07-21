@@ -20,6 +20,46 @@ public class HistoryData {
 	private static Map<User, List<Integer>> standingsData = new HashMap<>();
 
 	static {
+		Season season2020 = new Season(2020, 686, 613, "janosch (22)", true);
+		season2020.addUser(User.HUENI, new UserSeasonRecord(4, 101.5f, 241))
+				.addUser(User.NICO, new UserSeasonRecord(2, 128.5f, 279))
+				.addUser(User.TOBI, new UserSeasonRecord(5, 75, 166))
+				.addUser(User.JAN, new UserSeasonRecord(1, 131, 288))
+				.addUser(User.SCHROE, new UserSeasonRecord(3, 118.5f, 271));
+		HistoryData.addSeason(season2020);
+
+		Season season2019 = new Season(2019, 472, 628, "janosch (19)", true);
+		season2019.addUser(User.HUENI, new UserSeasonRecord(3, 116, 296))
+				.addUser(User.NICO, new UserSeasonRecord(1, 126.5f, 313))
+				.addUser(User.TOBI, new UserSeasonRecord(5, 78, 199))
+				.addUser(User.JAN, new UserSeasonRecord(4, 115, 293))
+				.addUser(User.SCHROE, new UserSeasonRecord(2, 125.5f, 312));
+		HistoryData.addSeason(season2019);
+
+		Season season2018 = new Season(2018, 892, 619, "schroe (21)", true);
+		season2018.addUser(User.HUENI, new UserSeasonRecord(4, 122, 283))
+				.addUser(User.NICO, new UserSeasonRecord(2, 123.5f, 301))
+				.addUser(User.TOBI, new UserSeasonRecord(5, 63, 125))
+				.addUser(User.JAN, new UserSeasonRecord(1, 126.5f, 312))
+				.addUser(User.SCHROE, new UserSeasonRecord(3, 123, 318));
+		HistoryData.addSeason(season2018);
+		
+		Season season2017 = new Season(2017, 719, 619, "nico (21)", true);
+		season2017.addUser(User.HUENI, new UserSeasonRecord(4, 111, 305))
+				.addUser(User.NICO, new UserSeasonRecord(1, 125, 341))
+				.addUser(User.TOBI, new UserSeasonRecord(5, 69.5f, 164))
+				.addUser(User.JAN, new UserSeasonRecord(3, 118, 329))
+				.addUser(User.SCHROE, new UserSeasonRecord(2, 122.5f, 322));
+		HistoryData.addSeason(season2017);
+		
+		Season season2016 = new Season(2016, 555, 620, "hueni (19)", true);
+		season2016.addUser(User.HUENI, new UserSeasonRecord(3, 115, 294))
+				.addUser(User.NICO, new UserSeasonRecord(2, 119, 304))
+				.addUser(User.TOBI, new UserSeasonRecord(5, 89.5f, 262))
+				.addUser(User.JAN, new UserSeasonRecord(1, 123, 326))
+				.addUser(User.SCHROE, new UserSeasonRecord(4, 104, 290));
+		HistoryData.addSeason(season2016);
+		
 		Season season2015 = new Season(2015, 630, 619, "nico (18)", true);
 		season2015.addUser(User.HUENI, new UserSeasonRecord(2, 104, 297))
 				.addUser(User.NICO, new UserSeasonRecord(1, 118, 327))

@@ -43,4 +43,14 @@ public interface HwdMessages extends Messages {
 	public String season2014Desc();
 
 	public String season2015Desc();
+
+	public String season2016Desc();
+
+	public String season2017Desc();
+
+	public String season2018Desc();
+
+	public String season2019Desc();
+
+	public String season2020Desc();
 }
