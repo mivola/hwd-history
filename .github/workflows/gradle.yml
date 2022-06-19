@@ -37,3 +37,11 @@ jobs:
       
     - name: Execute Gradle build
       run: ./gradlew build
+      
+    - name: Upload war
+      uses: actions/upload-artifact@v3
+      with:
+        name: .war file
+        path: |
+          build/libs/
+          gwt/out/com.voigt.hwd.HwdHistory
