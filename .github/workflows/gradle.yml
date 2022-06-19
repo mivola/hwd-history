@@ -42,6 +42,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: .war file
-        path: |
-          build/libs/
-          gwt/out/com.voigt.hwd.HwdHistory
+        path: build/libs/
