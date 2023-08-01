@@ -43,7 +43,7 @@ jobs:
     - name: Upload war
       uses: actions/upload-artifact@v3
       with:
-        name: hwd-history.zip
+        name: hwd-history
         path: build/libs/
    
     - name: Publish Test Report
