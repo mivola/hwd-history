@@ -20,7 +20,19 @@ public class HistoryData {
 	private static Map<User, List<Integer>> standingsData = new HashMap<>();
 
 	static {
-		Season season2022 = new Season(2022, 622, 589, "schroe89 (24)", true);
+		Season season2023 = new Season(2023, 579, 661, "rossi (21)", true);
+		season2023.addUser(User.HUENI, new UserSeasonRecord(7, 55.5f, 549))
+				.addUser(User.NICO, new UserSeasonRecord(2, 98.0f, 321))
+				.addUser(User.TOBI, new UserSeasonRecord(8, 32.5f, 200))
+				.addUser(User.JAN, new UserSeasonRecord(3, 79.5f, 298))
+				.addUser(User.SCHROE, new UserSeasonRecord(1, 98.5f, 311))
+				.addUser(User.MICHA, new UserSeasonRecord(6, 65.0f, 281))
+				.addUser(User.ROSSI, new UserSeasonRecord(5, 76.5f, 309))
+				.addUser(User.OLLI, new UserSeasonRecord(4, 78.0f, 277))
+				;
+		HistoryData.addSeason(season2023);
+		
+		Season season2022 = new Season(2022, 607, 624, "schroe89 (24)", true);
 		season2022.addUser(User.HUENI, new UserSeasonRecord(5, 87.5f, 283))
 				.addUser(User.NICO, new UserSeasonRecord(2, 92.5f, 274))
 				.addUser(User.TOBI, new UserSeasonRecord(7, 75.5f, 242))
