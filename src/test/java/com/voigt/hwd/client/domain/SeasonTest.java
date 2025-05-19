@@ -1,14 +1,13 @@
 package com.voigt.hwd.client.domain;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SeasonTest {
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		HistoryData.reset();
 	}
@@ -46,23 +45,29 @@ public class SeasonTest {
 		assertEquals(endYear, previousYear);
 	}
 
-	@Test(expected = InvalidBusinessDataException.class)
-	public void testAddingTheSameSeasonTwice() throws Exception {
-		Season season = new Season(2000);
-		HistoryData.addSeason(season);
-		HistoryData.addSeason(season);
+	@Test
+	public void testAddingTheSameSeasonTwice() {
+		assertThrows(InvalidBusinessDataException.class, () -> {
+			Season season = new Season(2000);
+			HistoryData.addSeason(season);
+			HistoryData.addSeason(season);
+		});
 	}
 
-	@Test(expected = InvalidBusinessDataException.class)
-	public void testAddingTheSimilarSeasonTwice() throws Exception {
-		HistoryData.addSeason(new Season(2000));
-		HistoryData.addSeason(new Season(2000));
+	@Test
+	public void testAddingTheSimilarSeasonTwice() {
+		assertThrows(InvalidBusinessDataException.class, () -> {
+			HistoryData.addSeason(new Season(2000));
+			HistoryData.addSeason(new Season(2000));
+		});
 	}
 
-	@Test(expected = InvalidBusinessDataException.class)
-	public void testAddingTheSamePlaceTwice() throws Exception {
-		HistoryData.addSeason(new Season(2000).addUser(User.HUENI, new UserSeasonRecord(1, 0, 0)).addUser(User.STEV,
-				new UserSeasonRecord(1, 0, 0)));
+	@Test
+	public void testAddingTheSamePlaceTwice() {
+		assertThrows(InvalidBusinessDataException.class, () -> {
+			HistoryData.addSeason(new Season(2000).addUser(User.HUENI, new UserSeasonRecord(1, 0, 0)).addUser(User.STEV,
+					new UserSeasonRecord(1, 0, 0)));
+		});
 	}
 	
 }

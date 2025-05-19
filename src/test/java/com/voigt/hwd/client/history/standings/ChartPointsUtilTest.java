@@ -1,12 +1,11 @@
 package com.voigt.hwd.client.history.standings;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
 
 import com.voigt.hwd.client.domain.User;
 
@@ -28,8 +27,8 @@ public class ChartPointsUtilTest {
 	public void testConvertionOfMiddlePlace() throws Exception {
 		List<Integer> lineDataAsList = getLineData(User.values().length / 2);
 		Integer lineData = lineDataAsList.get(0);
-		assertTrue("lineData: " + lineData, lineData > 40);
-		assertTrue("lineData: " + lineData, lineData < 60);
+		assertTrue(lineData > 40, "lineData: " + lineData);
+		assertTrue(lineData < 60, "lineData: " + lineData);
 	}
 
 	private List<Integer> getLineData(int... places) {

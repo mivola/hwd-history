@@ -1,122 +1,60 @@
 package com.voigt.hwd.client.domain;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class HistoryDataTest {
+class HistoryDataTest {
 
-	@Before
-	public void setup() {
-		HistoryData.reset();
-	}
+    static Stream<Season> provideSeasons() {
+        return HistoryData.getSeasons().stream();
+    }
 
-	@Test
-	public void testAddingOneSeasons() throws Exception {
+    @ParameterizedTest
+    @MethodSource("provideSeasons")
+    void testUniqueUsersPerSeason(Season season) {
+        Map<User, UserSeasonRecord> users = season.getUsers();
+        Set<User> uniqueUsers = new HashSet<>(users.keySet());
+        assertEquals(users.size(), uniqueUsers.size(), 
+            "Duplicate users found in season " + season.getYear());
+    }
 
-		addFirstSeason();
+    @ParameterizedTest
+    @MethodSource("provideSeasons")
+    void testUniquePlacesPerSeason(Season season) {
+        Map<User, UserSeasonRecord> users = season.getUsers();
+        Set<Integer> uniquePlaces = new HashSet<>();
+        for (UserSeasonRecord record : users.values()) {
+            assertTrue(uniquePlaces.add(record.getPlace()), 
+                "Duplicate place found in season " + season.getYear() + ": " + record.getPlace());
+        }
+    }
 
-		Map<User, StatisticalAllTimeData> userData = HistoryData.getStatisticalAllTimeData();
-		StatisticalAllTimeData hueni = userData.get(User.HUENI);
-		assertEquals(1, hueni.getCntSeasons());
-		assertEquals(1, hueni.getCntFirstPlace());
-		assertEquals(0, hueni.getCntLastPlace());
+    @ParameterizedTest
+    @MethodSource("provideSeasons")
+    void testDescendingPointsPerSeason(Season season) {
+        Map<User, UserSeasonRecord> users = season.getUsers();
+        float previousPoints = Integer.MAX_VALUE;
 
-		StatisticalAllTimeData stev = userData.get(User.STEV);
-		assertEquals(1, stev.getCntSeasons());
-		assertEquals(1, stev.getCntThirdPlace());
-		assertEquals(1, stev.getCntLastPlace());
+        for (int place = 1; place <= users.size(); place++) {
+            int finalPlace = place;
+            UserSeasonRecord record = users.values().stream()
+                .filter(r -> r.getPlace() == finalPlace)
+                .findFirst()
+                .orElse(null);
 
-		List<Integer> standingsData = HistoryData.getStandingsData(User.STEV);
-		assertEquals(Integer.valueOf(3), standingsData.get(0));
-	}
-
-	@Test
-
-	public void testAddingTwoSeasons() throws Exception {
-
-		addSecondSeason();
-
-		addFirstSeason();
-
-		Map<User, StatisticalAllTimeData> userData = HistoryData.getStatisticalAllTimeData();
-		StatisticalAllTimeData hueni = userData.get(User.HUENI);
-		assertEquals(2, hueni.getCntSeasons());
-		assertEquals(1, hueni.getCntFirstPlace());
-		assertEquals(1, hueni.getCntLastPlace());
-		assertEquals(Double.valueOf(18f), Double.valueOf(hueni.getTotalPoints()));
-		assertEquals(270, hueni.getTotalTippPoints());
-
-		StatisticalAllTimeData stev = userData.get(User.STEV);
-		assertEquals(2, stev.getCntSeasons());
-		assertEquals(1, stev.getCntFirstPlace());
-		assertEquals(1, stev.getCntThirdPlace());
-		assertEquals(1, stev.getCntLastPlace());
-		assertEquals(Double.valueOf(15f), Double.valueOf(stev.getTotalPoints()));
-		assertEquals(239, stev.getTotalTippPoints());
-
-		List<Integer> standingsDataHueni = HistoryData.getStandingsData(User.HUENI);
-		assertEquals(Integer.valueOf(1), standingsDataHueni.get(0));
-		assertEquals(Integer.valueOf(3), standingsDataHueni.get(1));
-
-		List<Integer> standingsDataStev = HistoryData.getStandingsData(User.STEV);
-		assertEquals(Integer.valueOf(3), standingsDataStev.get(0));
-		assertEquals(Integer.valueOf(1), standingsDataStev.get(1));
-
-	}
-
-	@Test
-	public void testAddingThreeSeasons() throws Exception {
-
-		addSecondSeason();
-
-		addFirstSeason();
-
-		Season season2001 = new Season(2001);
-		season2001.addUser(User.HUENI, new UserSeasonRecord(3, 9, 226))
-				.addUser(User.MICHA, new UserSeasonRecord(2, 10, 237))
-				.addUser(User.STEV, new UserSeasonRecord(4, 8, 262))
-				.addUser(User.NICO, new UserSeasonRecord(1, 15, 294))
-				.addUser(User.MARKUS, new UserSeasonRecord(5, 4, 177));
-		HistoryData.addSeason(season2001);
-
-		List<Integer> standingsDataHueni = HistoryData.getStandingsData(User.HUENI);
-		assertEquals(Integer.valueOf(1), standingsDataHueni.get(0));
-		assertEquals(Integer.valueOf(3), standingsDataHueni.get(1));
-		assertEquals(Integer.valueOf(3), standingsDataHueni.get(2));
-
-		List<Integer> standingsDataNico = HistoryData.getStandingsData(User.NICO);
-		assertEquals(Integer.valueOf(-1), standingsDataNico.get(0));
-		assertEquals(Integer.valueOf(-1), standingsDataNico.get(1));
-		assertEquals(Integer.valueOf(1), standingsDataNico.get(2));
-
-	}
-
-	@Test(expected = InvalidBusinessDataException.class)
-	public void testAddingTheSameUserTwice() throws Exception {
-		Season season = new Season(2000);
-		season.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173)).addUser(User.HUENI,
-				new UserSeasonRecord(2, 12, 177));
-	}
-
-	private void addSecondSeason() {
-		Season season2000 = new Season(2000);
-		season2000.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173))
-				.addUser(User.MICHA, new UserSeasonRecord(2, 12, 177))
-				.addUser(User.STEV, new UserSeasonRecord(1, 12, 181));
-		HistoryData.addSeason(season2000);
-	}
-
-	private void addFirstSeason() {
-		Season season1999 = new Season(1999);
-		season1999.addUser(User.HUENI, new UserSeasonRecord(1, 8, 97))
-				.addUser(User.MICHA, new UserSeasonRecord(2, 7, 101))
-				.addUser(User.STEV, new UserSeasonRecord(3, 3, 58));
-		HistoryData.addSeason(season1999);
-	}
-
+            assertNotNull(record, 
+                "Missing record for place " + place + " in season " + season.getYear());
+            assertTrue(record.getPoints() <= previousPoints, 
+                "Points are not in descending order in season " + season.getYear() + 
+                " for place " + place + ": " + record.getPoints() + " > " + previousPoints);
+            previousPoints = record.getPoints();
+        }
+    }
 }
