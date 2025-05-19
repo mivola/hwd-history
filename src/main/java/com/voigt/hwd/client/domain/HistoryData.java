@@ -20,7 +20,19 @@ public class HistoryData {
 	private static Map<User, List<Integer>> standingsData = new HashMap<>();
 
 	static {
-		Season season2023 = new Season(2023, 579, 661, "rossi (21)", true);
+		Season season2024 = new Season(2024, 725, 594, "schroe (20)", true);
+		season2024.addUser(User.HUENI, new UserSeasonRecord(7, 67.0f, 245))
+				.addUser(User.NICO, new UserSeasonRecord(3, 91.0f, 282))
+				.addUser(User.TOBI, new UserSeasonRecord(6, 68.0f, 241))
+				.addUser(User.JAN, new UserSeasonRecord(1, 97.5f, 276))
+				.addUser(User.SCHROE, new UserSeasonRecord(2, 91.0f, 385))
+				.addUser(User.MICHA, new UserSeasonRecord(4, 73.5f, 271))
+				.addUser(User.ROSSI, new UserSeasonRecord(8, 65.0f, 237))
+				.addUser(User.OLLI, new UserSeasonRecord(5, 68.5f, 276))
+				;
+		HistoryData.addSeason(season2024);
+		
+		Season season2023 = new Season(2023, 661, 579, "rossi (21)", true);
 		season2023.addUser(User.HUENI, new UserSeasonRecord(7, 55.5f, 549))
 				.addUser(User.NICO, new UserSeasonRecord(2, 98.0f, 321))
 				.addUser(User.TOBI, new UserSeasonRecord(8, 32.5f, 200))
@@ -31,8 +43,8 @@ public class HistoryData {
 				.addUser(User.OLLI, new UserSeasonRecord(4, 78.0f, 277))
 				;
 		HistoryData.addSeason(season2023);
-		
-		Season season2022 = new Season(2022, 607, 624, "schroe89 (24)", true);
+
+		Season season2022 = new Season(2022, 624, 607, "schroe89 (24)", true);
 		season2022.addUser(User.HUENI, new UserSeasonRecord(5, 87.5f, 283))
 				.addUser(User.NICO, new UserSeasonRecord(2, 92.5f, 274))
 				.addUser(User.TOBI, new UserSeasonRecord(7, 75.5f, 242))
@@ -43,7 +55,7 @@ public class HistoryData {
 				;
 		HistoryData.addSeason(season2022);
 		
-		Season season2021 = new Season(2021, 622, 589, "janosch (26)", true);
+		Season season2021 = new Season(2021, 589, 622, "janosch (26)", true);
 		season2021.addUser(User.HUENI, new UserSeasonRecord(4, 102.0f, 261))
 				.addUser(User.NICO, new UserSeasonRecord(2, 123.0f, 292))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 94, 233))
@@ -202,7 +214,7 @@ public class HistoryData {
 		season2007.addUser(User.HUENI, new UserSeasonRecord(9, 49, 252))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 67, 282))
 				.addUser(User.STEV, new UserSeasonRecord(1, 87, 318))
-				.addUser(User.NICO, new UserSeasonRecord(2, 64, 295))
+				.addUser(User.NICO, new UserSeasonRecord(2, 67, 295))
 				.addUser(User.MARKUS, new UserSeasonRecord(8, 56, 224))
 				.addUser(User.TOBI, new UserSeasonRecord(4, 66.5f, 271))
 				.addUser(User.MARCEL, new UserSeasonRecord(10, 48, 239))
