@@ -19,6 +19,7 @@ public class HistoryOverviewDataProvider {
 
 		historyOverviewList.clear();
 		List<Season> seasons = HistoryData.getSeasons();
+		seasons.sort((o1, o2) -> o2.getYear() - o1.getYear());
 		for (Season season : seasons) {
 			String filenameAndUrlSuffix = getFilename(season.getYear());
 			String imageFilename = filenameAndUrlSuffix + ".png";
