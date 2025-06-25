@@ -1,8 +1,6 @@
 package com.voigt.hwd.client.history.overview.data;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import com.google.gwt.i18n.client.NumberFormat;
 import com.voigt.hwd.client.domain.HistoryData;
@@ -19,7 +17,11 @@ public class HistoryOverviewDataProvider {
 
 		historyOverviewList.clear();
 		List<Season> seasons = HistoryData.getSeasons();
-		seasons.sort((o1, o2) -> o2.getYear() - o1.getYear());
+		Collections.sort(seasons, new Comparator<Season>() {
+			public int compare(Season o1, Season o2) {
+				return o2.getYear() - o1.getYear();
+			}
+		});
 		for (Season season : seasons) {
 			String filenameAndUrlSuffix = getFilename(season.getYear());
 			String imageFilename = filenameAndUrlSuffix + ".png";
