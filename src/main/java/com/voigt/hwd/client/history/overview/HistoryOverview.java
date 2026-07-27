@@ -17,6 +17,8 @@ import com.voigt.hwd.client.history.overview.data.HistoryOverviewDataProvider;
 import com.voigt.hwd.client.i18n.HwdMessages;
 import com.voigt.hwd.client.i18n.HwdMessagesFactory;
 
+import java.util.Collection;
+
 public class HistoryOverview extends AbstractBasePanel {
 
 	private static final String DESCRIPTION = "<p>die einzelnen Jahre im Überblick ...</p>";
@@ -63,24 +65,20 @@ public class HistoryOverview extends AbstractBasePanel {
 		tabSet.setTabBarControls(TabBarControls.TAB_SCROLLER, TabBarControls.TAB_PICKER, layoutSpacer);
 
 		HwdMessages messages = HwdMessagesFactory.getInstance();
-
-		for (int i = HistoryData.getStartYear(); i <= HistoryData.getEndYear(); i++) {
+		HistoryOverviewDataProvider dataProvider = new HistoryOverviewDataProvider();
+		Collection<HistoryOverviewData> seasons = dataProvider.getSeasons();
+		for (HistoryOverviewData data : seasons) {
 			Tab tab = new Tab();
-			String seasonString = messages.seasonString(i, (i + 1));
+			int year = data.getYear();
+			String seasonString = messages.seasonString(year, (year + 1));
 			tab.setTitle(seasonString);
 
-			HistoryOverviewDataProvider dataProvider = new HistoryOverviewDataProvider();
-			HistoryOverviewData data = dataProvider.getData(i);
-
 			Window wnd = new HistoryOverviewWindow(data);
-
 			tab.setPane(wnd);
-
 			tabSet.addTab(tab);
 		}
 
 		layout.addMember(tabSet);
-
 		return layout;
 	}
 

@@ -31,13 +31,13 @@ public class HistoryOverviewDataProvider {
 			String description = season.getDescription();
 			int imageHeight = season.getImageHeight();
 			int imageWidth = season.getImageWidth();
-			HistoryOverviewData historyOverviewData = new HistoryOverviewData(imageHeight, imageWidth,
+			HistoryOverviewData historyOverviewData = new HistoryOverviewData(season.getYear(), imageHeight, imageWidth,
 					season.getCntUsers(), imageFilename, maxPoints, description, winnersString, url);
 			historyOverviewList.add(historyOverviewData);
 		}
 	}
 
-	String getFilename(int year) {
+	private String getFilename(int year) {
 		int startYear;
 		if (year < 2000) {
 			startYear = year - 1900;
@@ -55,13 +55,8 @@ public class HistoryOverviewDataProvider {
 		return "hwd" + format.format(startYear) + "_" + format.format(endYear);
 	}
 
-	public HistoryOverviewData getData(int season) {
-
-		int index = season - HistoryData.getStartYear();
-		if (historyOverviewList.size() > index) {
-			return historyOverviewList.get(index);
-		}
-		return new HistoryOverviewData(100, 100, 1, "", "", "", "", "");
+	public Collection<HistoryOverviewData> getSeasons() {
+		return historyOverviewList;
 	}
 
 }
