@@ -13,6 +13,13 @@ public class SeasonTest {
 	}
 
 	@Test
+	public void testSetAndGetDescription() {
+		Season season = new Season(2000).setDescription("desc");
+
+		assertEquals("desc", season.getDescription());
+	}
+
+	@Test
 	public void testAddingOneSeason() throws Exception {
 		
 		HistoryData.addSeason(new Season(1999));

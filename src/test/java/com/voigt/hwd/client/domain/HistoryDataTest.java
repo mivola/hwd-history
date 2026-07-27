@@ -18,6 +18,15 @@ class HistoryDataTest {
 
     @ParameterizedTest
     @MethodSource("provideSeasons")
+    void testSeasonDescriptionMustBeSet(Season season) {
+        assertNotNull(season.getDescription(),
+            "Missing description in season " + season.getYear());
+        assertFalse(season.getDescription().trim().isEmpty(),
+            "Empty description in season " + season.getYear());
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideSeasons")
     void testUniqueUsersPerSeason(Season season) {
         Map<User, UserSeasonRecord> users = season.getUsers();
         Set<User> uniqueUsers = new HashSet<>(users.keySet());

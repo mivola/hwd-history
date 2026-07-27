@@ -25,6 +25,8 @@ public class Season {
 
 	private String maxPoints;
 
+	private String description;
+
 	Season(int year) {
 		this.year = year;
 	}
@@ -81,6 +83,15 @@ public class Season {
 
 	public String getMaxPoints() {
 		return maxPoints;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Season setDescription(String description) {
+		this.description = description;
+		return this;
 	}
 
 	public boolean hasLiveSystem() {

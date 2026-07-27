@@ -9,48 +9,4 @@ public interface HwdMessages extends Messages {
 	public String welcomeNews();
 
 	public String welcomeNewsTitle();
-
-	public String season1999Desc();
-
-	public String season2000Desc();
-
-	public String season2001Desc();
-
-	public String season2002Desc();
-
-	public String season2003Desc();
-
-	public String season2004Desc();
-
-	public String season2005Desc();
-
-	public String season2006Desc();
-
-	public String season2007Desc();
-
-	public String season2008Desc();
-
-	public String season2009Desc();
-
-	public String season2010Desc();
-
-	public String season2011Desc();
-
-	public String season2012Desc();
-
-	public String season2013Desc();
-
-	public String season2014Desc();
-
-	public String season2015Desc();
-
-	public String season2016Desc();
-
-	public String season2017Desc();
-
-	public String season2018Desc();
-
-	public String season2019Desc();
-
-	public String season2020Desc();
 }

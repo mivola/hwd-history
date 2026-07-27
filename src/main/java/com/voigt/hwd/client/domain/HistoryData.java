@@ -21,6 +21,7 @@ public class HistoryData {
 
 	static {
 		Season season2025 = new Season(2025, 618, 615, "hueni (19)", true);
+		season2025.setDescription("Mit großem Vorsprung kann Schroe den Pokal zurückgewinnen - auch Tobi ist zurück am Tabellenende ;-)");
 		season2025.addUser(User.HUENI, new UserSeasonRecord(3, 88.5f, 289))
 				.addUser(User.NICO, new UserSeasonRecord(4, 87.0f, 294))
 				.addUser(User.TOBI, new UserSeasonRecord(7, 45.5f, 183))
@@ -31,6 +32,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2025);
 
 		Season season2024 = new Season(2024, 725, 594, "schroe (20)", true);
+		season2024.setDescription("Nach 2 Jahren Pause holt sich Jan den Pokal zurück. Eine große Sensation am Ende der Tabelle: Tobi schafft es an Rossi vorbei auf den vorletzten Tabellenplatz - Glückwunsch!");
 		season2024.addUser(User.HUENI, new UserSeasonRecord(7, 67.0f, 245))
 				.addUser(User.NICO, new UserSeasonRecord(3, 91.0f, 282))
 				.addUser(User.TOBI, new UserSeasonRecord(6, 68.0f, 241))
@@ -42,6 +44,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2024);
 
 		Season season2023 = new Season(2023, 661, 579, "rossi (21)", true);
+		season2023.setDescription("Es gibt einen neuen Sieger: Schrö holt sich zum ersten Mal den Pokal. Nico & Jan müssen sich mit den Plätzen 2 & 3 begnügen. Olli kommt in seiner Premierensaison auf einen respektablen vierten Platz. Hüni & Tobi: siehe die letzten X Jahre - und auch der Vorjahressieger muss blechen!");
 		season2023.addUser(User.HUENI, new UserSeasonRecord(7, 55.5f, 549))
 				.addUser(User.NICO, new UserSeasonRecord(2, 98.0f, 321))
 				.addUser(User.TOBI, new UserSeasonRecord(8, 32.5f, 200))
@@ -53,6 +56,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2023);
 
 		Season season2022 = new Season(2022, 624, 607, "schroe89 (24)", true);
+		season2022.setDescription("Durch ein imenses Handgeld wurden Rossi und Micha reaktiviert und konnten die Szene ordentlich aufmischen: Micha holt sich auf Anhieb den Pokal und Rossi den dritten Platz.");
 		season2022.addUser(User.HUENI, new UserSeasonRecord(5, 87.5f, 283))
 				.addUser(User.NICO, new UserSeasonRecord(2, 92.5f, 274))
 				.addUser(User.TOBI, new UserSeasonRecord(7, 75.5f, 242))
@@ -63,6 +67,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2022);
 
 		Season season2021 = new Season(2021, 589, 622, "janosch (26)", true);
+		season2021.setDescription("Janosch verweist Nico erneut auf den zweiten Platz 2 und darf den Pokal behalten. Auch die anderen Platzierungen bleiben wie gehabt.");
 		season2021.addUser(User.HUENI, new UserSeasonRecord(4, 102.0f, 261))
 				.addUser(User.NICO, new UserSeasonRecord(2, 123.0f, 292))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 94, 233))
@@ -71,6 +76,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2021);
 
 		Season season2020 = new Season(2020, 686, 613, "janosch (22)", true);
+		season2020.setDescription("Janosch holt sich den Titel zurück und verweist Nico & Schrö auf die Plätze. Hüni & Tobi: siehe die letzten X Jahre ;-)");
 		season2020.addUser(User.HUENI, new UserSeasonRecord(4, 101.5f, 241))
 				.addUser(User.NICO, new UserSeasonRecord(2, 128.5f, 279))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 75, 166))
@@ -79,6 +85,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2020);
 
 		Season season2019 = new Season(2019, 472, 628, "janosch (19)", true);
+		season2019.setDescription("Nico gewinnt erneut und diesmal knapp gegen Schrö, der vorm letzten Spieltag noch in Führung lag! Wie immer abgeschlagen: Tobi. Hüni schafft es seit langem mal wieder aufs Treppchen.");
 		season2019.addUser(User.HUENI, new UserSeasonRecord(3, 116, 296))
 				.addUser(User.NICO, new UserSeasonRecord(1, 126.5f, 313))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 78, 199))
@@ -87,6 +94,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2019);
 
 		Season season2018 = new Season(2018, 892, 619, "schroe (21)", true);
+		season2018.setDescription("Nico & Jan wechseln sich erneut an der Spitze ab. Für Hüni & Tobi gilt: \"the same procedure as every year\"!");
 		season2018.addUser(User.HUENI, new UserSeasonRecord(4, 122, 283))
 				.addUser(User.NICO, new UserSeasonRecord(2, 123.5f, 301))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 63, 125))
@@ -95,6 +103,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2018);
 
 		Season season2017 = new Season(2017, 719, 619, "nico (21)", true);
+		season2017.setDescription("Nico holt sich die Krone zurück und Schrö kommt knapp dahinter auf den zweiten Platz. Am Ende der Tabelle gibt es nix neues ;-)");
 		season2017.addUser(User.HUENI, new UserSeasonRecord(4, 111, 305))
 				.addUser(User.NICO, new UserSeasonRecord(1, 125, 341))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 69.5f, 164))
@@ -103,6 +112,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2017);
 
 		Season season2016 = new Season(2016, 555, 620, "hueni (19)", true);
+		season2016.setDescription("Janosch beendet Nicos Siegesserie, Schrö schafft es aufs Treppchen. Tobi mit Abstand Letzter!");
 		season2016.addUser(User.HUENI, new UserSeasonRecord(3, 115, 294))
 				.addUser(User.NICO, new UserSeasonRecord(2, 119, 304))
 				.addUser(User.TOBI, new UserSeasonRecord(5, 89.5f, 262))
@@ -111,6 +121,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2016);
 
 		Season season2015 = new Season(2015, 630, 619, "nico (18)", true);
+		season2015.setDescription("Auch in diesem Jahr schrumpft die Teilnehmerzahl da Micha und Rossi neue Herausforderungen suchen. Das Ausscheiden dieser beiden Koryphäen spielt Nico natürlich in die Hände und er holt die vierte Meisterschaft in Folge.");
 		season2015.addUser(User.HUENI, new UserSeasonRecord(2, 104, 297))
 				.addUser(User.NICO, new UserSeasonRecord(1, 118, 327))
 				.addUser(User.TOBI, new UserSeasonRecord(4, 91.5f, 265))
@@ -120,6 +131,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2015);
 
 		Season season2014 = new Season(2014, 689, 620, "tobi (19)", true);
+		season2014.setDescription("Diesmal verlassen Marcel, Chapper & Patzi die Tipprunde. Mit Schrö wird ein neuer Mitspieler gewonnen. Durch die Reduzierung der Teilnehmer erreichen am Ende 3 Spieler mehr als 100 Gesamtpunkte. Nico macht das Titel-Triple perfekt.");
 		season2014.addUser(User.HUENI, new UserSeasonRecord(3, 102, 322))
 				.addUser(User.MICHA, new UserSeasonRecord(5, 67.5f, 258))
 				.addUser(User.NICO, new UserSeasonRecord(1, 106, 331))
@@ -131,6 +143,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2014);
 
 		Season season2013 = new Season(2013, 515, 608, "hüni, nico, janosch (18)", true);
+		season2013.setDescription("Markus sucht sich eine neue Sportart und Stev sucht nach dem enttäuschenden siebten Platz der Vorsaison einen neuen Trainer und steigen vor der Saison aus. Nico gewinnt erneut, diesmal recht knapp vor Hüni.");
 		season2013.addUser(User.HUENI, new UserSeasonRecord(2, 82, 327))
 				.addUser(User.MICHA, new UserSeasonRecord(5, 65.5f, 281))
 				.addUser(User.NICO, new UserSeasonRecord(1, 84, 307))
@@ -144,6 +157,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2013);
 
 		Season season2012 = new Season(2012, 577, 620, "hüni, stev (22)", true);
+		season2012.setDescription("Eine absolute Machtdemonstration von Nico: erstmals in der HWD-Geschichte erzielt ein Spieler mehr als 100 Gewinnpunkte. Und dazu auch noch ein 10er Tipppunkte-Schnitt. Respekt! Auch eine Rekordsaison für Marcel: er lässt Patzi & Sven (und natürlich die obligatorischen 2: Markus & Tobi) hinter sich und ist erstmals nicht unter den Bezahlern!");
 		season2012.addUser(User.HUENI, new UserSeasonRecord(5, 61.5f, 279))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 72.5f, 293))
 				.addUser(User.STEV, new UserSeasonRecord(7, 51, 269))
@@ -159,6 +173,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2012);
 
 		Season season2011 = new Season(2011, 576, 605, "nico (21)", true);
+		season2011.setDescription("Wieder sehr spannender Zweikampf zwischen Stev & Nico. Wieder gewinnt Stev den letzten Spieltag und diesmal holt er einen Gewinnpunkt mehr. Marcel, Tobi & Markus verweilen weiterhin auf den Geberplätzen.");
 		season2011.addUser(User.HUENI, new UserSeasonRecord(6, 55, 290))
 				.addUser(User.MICHA, new UserSeasonRecord(4, 61, 286))
 				.addUser(User.STEV, new UserSeasonRecord(1, 76.5f, 317))
@@ -174,6 +189,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2011);
 
 		Season season2010 = new Season(2010, 777, 609, "hüni, stev, nico, patzi, chapper (18)", true);
+		season2010.setDescription("Nachdem Jan in der Vorsaison noch gegen die rote Laterne kämpfte, ging er diesmal als Meister (und das deutlich!) hervor. Am Tabellenende dümpeln wiedermal Marcel und Markus. Selbst Neueinsteiger & Bayerntipper Chapper kommt problemlos an den beiden vorbei.");
 		season2010.addUser(User.HUENI, new UserSeasonRecord(2, 87, 288))
 				.addUser(User.MICHA, new UserSeasonRecord(9, 41, 241))
 				.addUser(User.STEV, new UserSeasonRecord(5, 63, 263))
@@ -189,6 +205,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2010);
 
 		Season season2009 = new Season(2009, 717, 588, "hüni (21)", true);
+		season2009.setDescription("Nach einer furiosen Hinrunde (42 Punkte nach 14 Spieltagen) bricht Micha in der Rückrunde gnadenlos ein. Um nicht wieder als Vizekusen beschimpft zu werden, lässt er sich auf Platz 4 zurückfallen - und Bayer04 macht es ihm nach... Mit 11 Punkten Vorsprung sichert sich Hüni am Ende recht souverän seinen zweiten HWD-Meistertitel nach 1999/2000. Interessant auch, dass es schon Nebenwetten auf den kommenden HWD-Champion gab. Weiterhin zu erwähnen: Jan sichert sich mit einer nicht für möglich gehaltenen Aktion am letzten Spieltag (Spieltagssieg) den letzten Platz vor den 3 Fetenausrichtern und verweist Patzi mit 0,5 Punkten auf Platz 9.");
 		season2009.addUser(User.HUENI, new UserSeasonRecord(1, 80.5f, 300))
 				.addUser(User.MICHA, new UserSeasonRecord(4, 65.5f, 296))
 				.addUser(User.STEV, new UserSeasonRecord(2, 69.5f, 284))
@@ -203,6 +220,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2009);
 
 		Season season2008 = new Season(2008, 987, 581, "janosch (21)", true);
+		season2008.setDescription("Ein extrem knappes Foto-Finish zwischen Nico und Micha. Letzerer lag vorm letzten Spieltag noch in Führung. Nico sicherte sich durch einen dritten Platz am letzen Spieltag jedoch den Saisonsieg mit 0.5 Punkten Vorsprung.");
 		season2008.addUser(User.HUENI, new UserSeasonRecord(5, 59, 290))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 73, 296))
 				.addUser(User.STEV, new UserSeasonRecord(8, 49, 273))
@@ -218,6 +236,7 @@ public class HistoryData {
 
 		Season season2007 = new Season(2007, 749, 577, "hüni, nico, markus, janosch (17)",
 				true);
+		season2007.setDescription("Diesmal gewinnt Stev sehr souverän vor Nico. Mit ebenso großem Abstand wird Patzi Letzter. In dieser Saison gibt es erstmals Gewinnpunkte für die besten 5 Tagestipper.");
 		season2007.addUser(User.HUENI, new UserSeasonRecord(9, 49, 252))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 67, 282))
 				.addUser(User.STEV, new UserSeasonRecord(1, 87, 318))
@@ -232,6 +251,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2007);
 
 		Season season2006 = new Season(2006, 874, 581, "hüni (25)", true);
+		season2006.setDescription("Sehr spannendes Finish: Stev holt den letzten Tagessieg und ist danach punktgleich mit Nico. Nico gewinnt aufgrund der um 3 Punkte besseren \"Tor\"differenz.");
 		season2006.addUser(User.HUENI, new UserSeasonRecord(8, 21, 210))
 				.addUser(User.MICHA, new UserSeasonRecord(7, 21.5f, 248))
 				.addUser(User.STEV, new UserSeasonRecord(2, 35, 288))
@@ -244,6 +264,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2006);
 
 		Season season2005 = new Season(2005, 727, 602, "micha (19)", true);
+		season2005.setDescription("Erste Saison mit der neuen Jokerregelung und einem neuen Teilnehmer: Marcel. Dadurch wurde es auch wieder etwas spannender am Tabellenende :-)");
 		season2005.addUser(User.HUENI, new UserSeasonRecord(4, 29.5f, 244))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 39, 292))
 				.addUser(User.STEV, new UserSeasonRecord(2, 45.5f, 280))
@@ -254,6 +275,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2005);
 
 		Season season2004 = new Season(2004, 925, 655, "nico (17)", true);
+		season2004.setDescription("Der erste Titelgewinn für Micha. Am Tabellenende nichts neues mit Tobi & Markus.");
 		season2004.addUser(User.HUENI, new UserSeasonRecord(4, 9, 250))
 				.addUser(User.MICHA, new UserSeasonRecord(1, 12, 273))
 				.addUser(User.STEV, new UserSeasonRecord(2, 10.5f, 278))
@@ -263,6 +285,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2004);
 
 		Season season2003 = new Season(2003, 716, 617, "stev (17)", true);
+		season2003.setDescription("Stev gewinnt souverän seinen zweiten Titel und am Tabellenende holt Markus zum dritten Mal in Folge die rote Laterne.");
 		season2003.addUser(User.HUENI, new UserSeasonRecord(2, 10, 232))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 9.5f, 250))
 				.addUser(User.STEV, new UserSeasonRecord(1, 14.5f, 262))
@@ -272,6 +295,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2003);
 
 		Season season2002 = new Season(2002, 1027, 876, "nico (17)", false);
+		season2002.setDescription("Nach dem Warm-Up in der Vorsaison bekam 2002/2003 auch Buschi das harte Tipperleben zu spüren. 2 Spieltage vor Schluss gab es noch ein Kopf-an-Kopfrennen mit ihm, Nico und Micha. Ein Endspurt mit 2 Siegen bescherrte Nico jedoch den verdienten Sieg und damit gelang erstmals in der HWD-Geschichte eine Titelverteidigung.");
 		season2002.addUser(User.HUENI, new UserSeasonRecord(4, 7, 246))
 				.addUser(User.MICHA, new UserSeasonRecord(3, 11, 243))
 				.addUser(User.STEV, new UserSeasonRecord(5, 6.5f, 214))
@@ -281,6 +305,7 @@ public class HistoryData {
 		HistoryData.addSeason(season2002);
 
 		Season season2001 = new Season(2001, 636, 429, "micha, nico (19)", false);
+		season2001.setDescription("In der Saison 2001/2002 haben wir unsere Mitgliederzahl verdoppelt. Gleich zu Beginn sind Nico und Markus eingestiegen, später (außerhalb der Wertung, zum Warmmachen sozusagen ;-) sogar noch Buschi. In dieser Saison wurde zur Spannungssteigerung auch der Extratipp engeführt.");
 		season2001.addUser(User.HUENI, new UserSeasonRecord(3, 9, 226))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 10, 237))
 				.addUser(User.STEV, new UserSeasonRecord(4, 8, 262))
@@ -289,12 +314,14 @@ public class HistoryData {
 		HistoryData.addSeason(season2001);
 
 		Season season2000 = new Season(2000, 636, 429, "hüni (18)", false);
+		season2000.setDescription("Die zweite Saison haben wir zu dritt komplett durchgespielt, Und dank Stev \"Excel-Gott\" Thomas sogar mit vorzüglichen Excel-Tabellen :-)");
 		season2000.addUser(User.HUENI, new UserSeasonRecord(3, 10, 173))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 12, 177))
 				.addUser(User.STEV, new UserSeasonRecord(1, 12, 181));
 		HistoryData.addSeason(season2000);
 
 		Season season1999 = new Season(1999, 1062, 633, "", false);
+		season1999.setDescription("Die HWD-Premiere haben Hüni und Micha zur Rückrunde der Saison 1999/2000 eröffnet. Und das mit so antiken und unpassenden Mitteln wie Mircosoft Word! Später kam dann auch noch Stev dazu. Damals war der Einsatz noch wesentlich geringer: Der Verlierer eines Spieltags zahlt dem/n Gewinner/n ein Cola-Weizen. Jaja, das waren noch Zeiten ... ;-)");
 		season1999.addUser(User.HUENI, new UserSeasonRecord(1, 8, 97))
 				.addUser(User.MICHA, new UserSeasonRecord(2, 7, 101))
 				.addUser(User.STEV, new UserSeasonRecord(3, 3, 58));
